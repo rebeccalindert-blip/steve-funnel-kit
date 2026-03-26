@@ -6,7 +6,7 @@
 
 Simple landing pages that actually convert. Built on a proper design system so AI can't produce slop.
 
-> This repo is called Steve's Funnel Kit. The site is [damngoodfunnels.com](https://damngoodfunnels.com). The logo says Damn Good Funnels. Same project … different hat.
+> This repo is called Steve's Funnel Kit. The site is [damngoodfunnels.com](https://damngoodfunnels.com).
 
 ---
 
