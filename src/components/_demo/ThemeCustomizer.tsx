@@ -128,6 +128,7 @@ function loadGoogleFont(name: string) {
 }
 
 export default function ThemeCustomizer() {
+  const [enabled, setEnabled] = useState(false);
   const [open, setOpen] = useState(false);
   const [hue, setHue] = useState(162);
   const [hexColor, setHexColor] = useState('#3ECF8E');
@@ -141,6 +142,14 @@ export default function ThemeCustomizer() {
   const [headingUppercase, setHeadingUppercase] = useState(false);
   const [btnWeight, setBtnWeight] = useState('500');
   const [btnUppercase, setBtnUppercase] = useState(false);
+
+  // Check demo mode at runtime via API (works with wrangler.toml [vars])
+  useEffect(() => {
+    fetch('/api/demo-mode')
+      .then(r => r.json())
+      .then((d: { demo: boolean }) => setEnabled(d.demo))
+      .catch(() => {});
+  }, []);
 
   // Sync hex display when hue changes
   useEffect(() => {
@@ -288,6 +297,8 @@ export default function ThemeCustomizer() {
 
   const labelCls = "text-xs font-semibold text-[var(--foreground)] block mb-1.5 uppercase tracking-wider";
   const selectCls = "w-full h-8 rounded-md border border-[var(--border)] bg-[var(--background)] text-xs text-[var(--foreground)] px-2 focus:outline-none focus:ring-2 focus:ring-[var(--ring)] cursor-pointer";
+
+  if (!enabled) return null;
 
   if (!open) {
     return (

@@ -4,10 +4,9 @@ import SEO from '@/components/seo/SEO.astro';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Footer from '@/components/layout/Footer.astro';
 import siteConfig from '@/config/site.config';
-// Demo-only: theme customizer + restore. Only renders when PUBLIC_DEMO_MODE=true.
+// Demo: theme customizer + restore script. Customizer self-checks via /api/demo-mode at runtime.
 import ThemeCustomizer from '@/components/_demo/ThemeCustomizer.tsx';
 import DemoRestore from '@/components/_demo/DemoRestore.astro';
-const isDemo = import.meta.env.PUBLIC_DEMO_MODE === 'true';
 
 interface Props {
   title?: string;
@@ -45,7 +44,7 @@ const { title, description } = Astro.props;
       })();
     </script>
 
-    {isDemo && <DemoRestore />}
+    <DemoRestore />
   </head>
 
   <body class="min-h-screen flex flex-col bg-background text-foreground antialiased">
@@ -66,7 +65,7 @@ const { title, description } = Astro.props;
         { label: 'Privacy', href: '/terms' },
       ]}
     />
-    {isDemo && <ThemeCustomizer client:only="react" />}
+    <ThemeCustomizer client:only="react" />
   </body>
 </html>
 
