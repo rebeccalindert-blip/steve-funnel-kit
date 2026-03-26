@@ -11,8 +11,8 @@ export const selectVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-10 px-4 text-sm',
+        sm: 'h-8 px-3 text-base sm:text-sm',
+        md: 'h-10 px-4 text-base sm:text-sm',
         lg: 'h-12 px-4 text-base',
       },
     },

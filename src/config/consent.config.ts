@@ -9,7 +9,7 @@ const consentConfig: ConsentConfig = {
   mode: 'consent_mode_v2',
 
   /** localStorage key for stored preferences */
-  storageKey: 'linkninja-consent',
+  storageKey: 'sfk-consent',
 
   categories: {
     necessary: {

@@ -29,7 +29,7 @@ const nonFeaturedPosts = posts.filter((post) => !post.data.featured);
 const regularPosts = nonFeaturedPosts.length > 0 ? nonFeaturedPosts : posts;
 
 const getPostUrl = (postId: string) => {
-  // Remove locale prefix from id (e.g., "en/welcome-to-velocity" -> "welcome-to-velocity")
+  // Remove locale prefix from id (e.g., "en/getting-started" -> "getting-started")
   const slug = postId.replace('en/', '');
   return `/blog/${slug}`;
 };
@@ -43,17 +43,7 @@ const getPostUrl = (postId: string) => {
     scrollReveal
     showActiveState
     showCta
-    cta={{ label: 'View Docs', href: 'https://docs.deployvelocity.com' }}
     extraNav={[{ label: 'Features', href: '#features' }]}
-    actions={[
-      {
-        icon: 'github',
-        href: 'https://github.com/southwellmedia/velocity',
-        label: 'View on GitHub',
-        iconOnly: true,
-        target: '_blank',
-      },
-    ]}
   />
 
   <Hero layout="split" size="sm" class="bg-surface-secondary border-b border-border">

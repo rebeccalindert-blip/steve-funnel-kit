@@ -1,4 +1,4 @@
-Guide the user through deploying their Velocity Funnel Kit to Cloudflare Pages with GoHighLevel integration. Follow every step below in order.
+Guide the user through deploying their Steve's Funnel Kit to Cloudflare Pages with GoHighLevel integration. Follow every step below in order.
 
 $ARGUMENTS
 
@@ -40,6 +40,7 @@ Update `ALLOWED_ORIGINS` in all 3 API endpoint files:
 - `src/pages/api/lead.ts`
 - `src/pages/api/contact.ts`
 - `src/pages/api/newsletter.ts`
+- `src/pages/api/qualify.ts`
 
 Set them to:
 ```typescript
@@ -81,8 +82,12 @@ Print the following step-by-step instructions for the user to follow in their br
 | `GHL_API_KEY` | `<their-api-key>` | **Yes** |
 | `GHL_LOCATION_ID` | `<their-location-id>` | **Yes** |
 | `SITE_URL` | `https://<their-domain>` | No |
+| `PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX` (optional) | No |
+| `PUBLIC_GTM_ID` | `GTM-XXXXXXX` (optional) | No |
 
 3. Click **Save**
+
+**Analytics (optional):** If they have Google Analytics or GTM, add the measurement/container ID. These are public tracking IDs — no need to encrypt. If they don't have analytics yet, skip it.
 
 **Why encrypt?** The API key is a secret. Encrypting means nobody can read it after saving — not even in the dashboard.
 

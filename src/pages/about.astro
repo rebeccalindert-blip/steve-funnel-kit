@@ -1,100 +1,231 @@
 ---
 /**
- * About page
+ * Why I Built This
  * URL: /about
  */
 import PageLayout from '@/layouts/PageLayout.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 ---
 
 <PageLayout
-  title="About Us"
-  description="Learn about Velocity and the team behind it."
+  title="Why I Built This"
+  description="Steve Butler on why AI landing pages all look the same and what this kit does about it."
 >
   <Hero layout="centered" size="sm" showGrid>
-    <Badge slot="badge" pill pulse>Our Story</Badge>
+    <Badge slot="badge" pill pulse>The Back Story</Badge>
 
     <h1 slot="title">
-      Built by developers, for developers.
+      Why I built this.
     </h1>
 
     <p slot="description">
-      Velocity was born from the frustration of setting up the same tooling over and over.
-      We decided to create the starter we always wished existed.
+      AI can build anything now. Most of it looks pretty shit. Here's why that's a problem and what I did about it.
     </p>
   </Hero>
 
-  <!-- Mission Section -->
-  <section class="py-20 bg-surface-invert">
-    <div class="mx-auto max-w-4xl px-6 text-center">
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-on-invert mb-6">
-        Our Mission
-      </h2>
-      <p class="text-lg text-on-invert-secondary max-w-2xl mx-auto leading-relaxed">
-        To help developers ship beautiful, performant websites faster by eliminating
-        boilerplate and providing sensible defaults.
-      </p>
-    </div>
-  </section>
+  {/* Steve intro */}
+  <section class="pt-0 pb-[var(--space-section-lg)]">
+    <div class="mx-auto max-w-3xl px-6">
 
-  <!-- Values Section -->
-  <section class="py-20">
-    <div class="mx-auto max-w-6xl px-6">
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-        What We Believe
-      </h2>
+      <div class="flex flex-col sm:flex-row items-start gap-6 mb-12">
+        <img
+          src="/images/steve-b.jpg"
+          alt="Steve Butler"
+          class="w-24 h-24 object-cover border-2 border-border shrink-0"
+          style="border-radius: 9999px;"
+          width="96"
+          height="96"
+        />
+        <div>
+          <h2 class="font-display text-xl font-bold text-foreground">Steve Butler</h2>
+          <p class="text-sm text-foreground-muted mt-1 leading-relaxed">
+            Previously a corporate d-bag CEO. Now a full-time 7-figure creator aiming for 8 figures with zero headcount. AI is my best friend.
+            <a href="https://www.linkedin.com/in/stevebutler/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 ml-1">Follow me on LinkedIn →</a>
+          </p>
+        </div>
+      </div>
 
-      <div class="grid gap-8 md:grid-cols-3">
-        <!-- Performance -->
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
-              <Icon name="zap" size="md" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-bold text-foreground">Performance First</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Every decision is made with performance in mind. Zero JavaScript by default,
-                optimized images, and minimal CSS.
-              </p>
-            </div>
-          </div>
-        </Card>
+      <article class="about-prose space-y-6 text-base leading-relaxed text-foreground-secondary">
+        <p>
+          I created <strong class="text-foreground font-semibold"><a href="https://linkninja.co" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">LinkNinja</a></strong> (AI-powered LinkedIn sales pipeline… gives you a blackbelt in closing deals in DMs).
+          I run <strong class="text-foreground font-semibold"><a href="https://sevenfigurecreators.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Seven Figure Creators</a></strong> (use LinkedIn to hit 6, then 7-figure income)
+          and <strong class="text-foreground font-semibold">Growth Mode</strong> (white-label GoHighLevel agency) with my business partner
+          <a href="https://www.linkedin.com/in/mattlakajev/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 font-semibold">Matt Lakajev</a>. I helped him explode to over 100K followers on LinkedIn. He did most of that on his own, obviously… but you've probably never heard of me, so I'll take any chance I can get to plug myself.
+        </p>
 
-        <!-- Simplicity -->
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
-              <Icon name="box" size="md" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-bold text-foreground">Simplicity Matters</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                We strip away complexity so you can focus on what matters: building
-                great products for your users.
-              </p>
-            </div>
-          </div>
-        </Card>
+        <p>
+          I've been building websites and funnels for a long time. And right now the internet is being flooded with the ugliest shit I've ever seen.
+        </p>
 
-        <!-- Open Source -->
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-foreground/10 to-foreground/5 flex items-center justify-center text-foreground shrink-0">
-              <Icon name="github" size="md" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-bold text-foreground">Open Source</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Velocity is free and open source. We believe in giving back to the
-                community that made this possible.
-              </p>
-            </div>
-          </div>
-        </Card>
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">THE PROBLEM</h3>
+
+        <p>
+          Remember when early ChatGPT copy was obviously AI? The weird phrasing. The em dashes everywhere. That same motivational-LinkedIn tone that made you physically cringe. You could spot it from across a room. That's still a thing by the way. More cringe than ever.
+        </p>
+
+        <p>
+          The same thing is happening with websites. Right now. And most people haven't clocked it yet.
+        </p>
+
+        <p>
+          <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Claude Code</a>,
+          <a href="https://cursor.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Cursor</a>,
+          <a href="https://windsurf.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Windsurf</a>,
+          <a href="https://openai.com/index/introducing-codex/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Codex</a>,
+          <a href="https://lovable.dev" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Lovable</a>,
+          <a href="https://bolt.new" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Bolt</a>…
+          they can build entire websites in hours. Mint. Genuinely impressive. But the output? Flat gradients, rounded corners on everything, that same purple-to-blue glow, hero sections that all feel like the same PowerPoint slide. It's AI slop. And it <em>all</em> looks the same.
+        </p>
+
+        <p>
+          Here's the thing nobody's talking about: humans are pattern recognition machines. We clocked AI copy within months. We'll clock AI design just as fast. Your prospects are already doing it. Half a second of scrolling, their brain goes "AI slop," and they're gone. And this is only the beginning… it's going to get so much more obvious.
+        </p>
+
+        <p>
+          Meanwhile, drag-and-drop builders (<a href="https://unbounce.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Unbounce</a>, <a href="https://www.leadpages.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Leadpages</a>, <a href="https://www.clickfunnels.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">ClickFunnels</a>) are dying for a different reason. Slow, expensive, and the pages look like clip art. You know it. I know it. Your customers definitely know it.
+        </p>
+
+        <p>
+          Mediocre is dead. Genuinely dead. You can't look the same as everyone else and expect people to care.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">WHO THIS IS ACTUALLY FOR</h3>
+
+        <p>
+          You know the type. Maybe you are the type. No judgement.
+        </p>
+
+        <p>
+          Discovered vibe coding three weeks ago. Shipping websites at 2am. Absolute confidence. Zero design sense, zero front-end fundamentals, zero security awareness. Connecting APIs with no CORS protection, collecting leads with no rate limiting, hardcoding colours that break in dark mode, deploying with API keys in the f'ing source code.
+        </p>
+
+        <p>
+          You can vibe code and look silly. Or you can start with a repo like this.
+        </p>
+
+        <p>
+          It's not perfect. I'm not going to sit here and pretend it is. But it gives you guardrails that put you ahead of 99% of people vibe coding right now. A design system so AI can't produce ugly. Security headers and encrypted secrets so your GHL credentials aren't sitting in plain text. Mobile-responsive at every breakpoint so it doesn't look broken on the phone your prospects are actually using.
+        </p>
+
+        <p>
+          Keep vibing. Just look like less of a fool while you do it.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">WHAT I BUILT (AND WHY IT LOOKS VANILLA RIGHT NOW)</h3>
+
+        <p>
+          This demo site? Yeah, it looks pretty vanilla. On purpose.
+        </p>
+
+        <p>
+          It's the bones. Design tokens, component variants, semantic colours, security-hardened API routes. When you point <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Claude Code</a> at it (currently the best at this, in my experience) and start prompting… it comes to life. The design system constrains what the AI can do. It literally can't produce slop because the system won't let it.
+        </p>
+
+        <p>
+          I promise you… once you prompt it, you can create something like <a href="https://linkninja.co" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 font-semibold">linkninja.co</a> or <a href="https://sevenfigurecreators.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 font-semibold">sevenfigurecreators.com</a>. I prompted Claude to add a 2D gaming engine to LinkNinja's homepage. A gaming engine. On a marketing site. Because when everyone looks the same, being different is the whole game.
+        </p>
+
+        <p>
+          Those sites convert. They push into territory that looks and feels completely different from the AI slop flooding the internet right now.
+        </p>
+
+        <p>
+          That's the point. AI is here. Everyone has access to the same tools. So mediocre output is worthless… you need to push AI to produce <em>incredible</em> stuff. This kit gives you the foundation. You bring the prompts and the taste. The system handles the rest.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">REAL TALK THOUGH</h3>
+
+        <p>
+          <a href="https://deepmind.google/technologies/stitch/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Google Stitch</a>
+          just dropped. Haven't tried it yet. <a href="https://openai.com/index/introducing-codex/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Codex</a>
+          is shipping agents that build entire apps. AI is moving so fast that this repo might be genuinely redundant in two hours. I'm not going to pretend otherwise.
+        </p>
+
+        <p>
+          But every new tool still needs something to build on. Without a design system, you get the same generic output regardless of which AI you use. The tool changes, the slop stays the same.
+        </p>
+
+        <p>
+          So until someone ships an AI that also has taste… this is what I'll keep using. And iterating on. Probably.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">THE STACK</h3>
+
+        <p>
+          <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Astro 5</a> for static generation (zero JS by default). <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Tailwind CSS v4</a> with a CSS-first design token system.
+          <a href="https://react.dev" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">React 19</a> for interactive bits (forms, sheets). <a href="https://typescriptlang.org" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">TypeScript</a> for type safety. <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Cloudflare Pages</a> for free edge hosting
+          with serverless Workers for the API. <a href="https://www.gohighlevel.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">GoHighLevel</a> for CRM and lead automation.
+        </p>
+
+        <p>
+          No Next.js. No Vercel bills. No database. Just static pages that hydrate where needed and a couple of API routes
+          that talk to GHL. Simple. Fast. Free to run.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">WHY GOHIGHLEVEL</h3>
+
+        <p>
+          We run <a href="https://www.gohighlevel.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">GoHighLevel</a> as our white-label CRM through Growth Mode… it's what we offer to our members. So naturally, that's the integration I prioritised in this kit.
+        </p>
+
+        <p>
+          But the foundation works for anything. The API routes are just fetch calls. You could swap in <a href="https://www.hubspot.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">HubSpot</a>, <a href="https://attio.com" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Attio</a>, or whatever other overpriced CRM you claim to love but aren't actually using to its potential. The design system, the templates, the security… none of that cares what CRM you're sending leads to.
+        </p>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">WHAT'S IN IT</h3>
+
+        <ul class="space-y-3">
+          {[
+            '9 production-ready page templates',
+            '33 UI components (buttons, cards, forms, modals, the works)',
+            'Design token system… change your brand colour in one file',
+            'GoHighLevel CRM integration for lead capture',
+            'Free hosting on Cloudflare Pages with automatic SSL',
+            'AI slash commands that walk you through setup',
+            'Dark mode that actually works',
+            'Mobile-first responsive design at every breakpoint',
+            'Security hardened… CORS, rate limiting, input sanitization, encrypted secrets',
+          ].map((item) => (
+            <li class="flex gap-3 items-start text-foreground-secondary text-sm">
+              <Icon name="check-circle" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="font-display text-xl font-bold text-foreground !mt-10 !mb-2">THE GOAL</h3>
+
+        <p>
+          <a href="https://github.com/stvbutlr/steve-funnel-kit" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 font-semibold">Clone this repo</a>. Run three commands. Have a branded, live, converting landing page in under an hour.
+        </p>
+
+        <p>
+          Whether that happens on your first try remains to be seen. I'm still iterating. But that's the goal.
+        </p>
+
+        <p class="!mt-10">
+          Follow me on <a href="https://www.linkedin.com/in/stevebutler/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2 font-semibold">LinkedIn</a>.
+          I don't post. I don't even have a profile pic. But I just want clout and you should follow me anyway.
+        </p>
+
+        <p class="text-foreground font-medium !mt-6">
+          — Steve
+        </p>
+      </article>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4">
+        <Button href="/" variant="primary" size="lg">
+          <Icon name="arrow-left" size="sm" class="mr-2" />
+          Back to the Kit
+        </Button>
+        <Button href="https://www.linkedin.com/in/stevebutler/" variant="outline" size="lg" target="_blank">
+          <Icon name="linkedin" size="sm" class="mr-2" />
+          Follow Me on LinkedIn
+        </Button>
       </div>
     </div>
   </section>

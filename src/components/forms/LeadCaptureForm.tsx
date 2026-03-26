@@ -12,6 +12,8 @@ interface Props {
   formTags?: string[];
   submitLabel?: string;
   successRedirect?: string;
+  successLinkUrl?: string;
+  successLinkLabel?: string;
   termsHtml?: string;
 }
 
@@ -21,9 +23,11 @@ interface FormData {
 }
 
 export default function LeadCaptureForm({
-  formTags = ['linkninja_lead'],
+  formTags = ['website_lead'],
   submitLabel = 'Submit',
   successRedirect,
+  successLinkUrl,
+  successLinkLabel = 'Access Your Resource',
   termsHtml,
 }: Props) {
   const [loading, setLoading] = useState(false);
@@ -79,9 +83,11 @@ export default function LeadCaptureForm({
       if (result.success) {
         setLoading(false);
         setSuccess(true);
-        toast.success("You're in! Check your inbox.");
+        toast.success(successLinkUrl ? "You're in!" : "You're in! Check your inbox.");
 
-        if (successRedirect) {
+        // If successLinkUrl is set, show inline success with resource link (no redirect)
+        // If successRedirect is set (and no successLinkUrl), redirect to next step
+        if (!successLinkUrl && successRedirect) {
           const baseUrl = window.location.origin;
           const redirectPath = successRedirect.startsWith('http')
             ? successRedirect
@@ -111,6 +117,29 @@ export default function LeadCaptureForm({
   );
   const labelClasses = 'text-sm font-medium text-foreground';
   const errorClasses = 'text-sm text-[var(--error)]';
+
+  // Show success state with resource link
+  if (success && successLinkUrl) {
+    return (
+      <div className="mt-6 text-center py-8">
+        <div className="h-14 w-14 rounded-full bg-[var(--brand-500)]/20 flex items-center justify-center mx-auto mb-5">
+          <svg className="h-7 w-7 text-[var(--brand-500)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-[var(--foreground)]">You're in!</h3>
+        <p className="mt-2 text-sm text-[var(--foreground-muted)]">Your resource is ready. Click below to access it.</p>
+        <a
+          href={successLinkUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), '!mt-6 inline-flex')}
+        >
+          {successLinkLabel} →
+        </a>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -142,7 +171,7 @@ export default function LeadCaptureForm({
             {...register('email', {
               required: 'Email is required',
               pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                 message: 'Invalid email address',
               },
             })}
@@ -161,7 +190,7 @@ export default function LeadCaptureForm({
             defaultCountry="AU"
             value={phone}
             onChange={setPhone}
-            className="phone-input-velocity"
+            className="phone-input-kit"
           />
           {phoneError && (
             <div className={`mt-1 ${errorClasses}`}>{phoneError}</div>
@@ -220,7 +249,7 @@ export default function LeadCaptureForm({
 
       <style>{`
         /* Single input group: flag + number inside one bordered container */
-        .phone-input-velocity {
+        .phone-input-kit {
           display: flex;
           align-items: center;
           width: 100%;
@@ -234,14 +263,14 @@ export default function LeadCaptureForm({
           --PhoneInputCountrySelectArrow-color: var(--foreground-muted);
           --PhoneInputCountrySelectArrow-opacity: 0.7;
         }
-        .dark .phone-input-velocity {
+        .dark .phone-input-kit {
           background: var(--card);
         }
-        .phone-input-velocity:focus-within {
+        .phone-input-kit:focus-within {
           outline: none;
           box-shadow: 0 0 0 2px var(--ring);
         }
-        .phone-input-velocity .PhoneInputCountry {
+        .phone-input-kit .PhoneInputCountry {
           padding-left: 0.75rem;
           padding-right: 0.75rem;
           margin-right: 0;
@@ -251,22 +280,27 @@ export default function LeadCaptureForm({
           align-items: center;
           flex-shrink: 0;
         }
-        .phone-input-velocity .PhoneInputInput {
+        .phone-input-kit .PhoneInputInput {
           flex: 1;
           border: none;
           background: transparent;
           height: 100%;
           padding-left: 0.75rem;
           padding-right: 0.75rem;
-          font-size: 0.875rem;
+          font-size: 1rem;
           color: var(--foreground);
           outline: none;
           min-width: 0;
         }
-        .phone-input-velocity .PhoneInputInput::placeholder {
+        @media (min-width: 640px) {
+          .phone-input-kit .PhoneInputInput {
+            font-size: 0.875rem;
+          }
+        }
+        .phone-input-kit .PhoneInputInput::placeholder {
           color: var(--muted-foreground);
         }
-        .phone-input-velocity .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon + .PhoneInputCountrySelectArrow {
+        .phone-input-kit .PhoneInputCountrySelect:focus + .PhoneInputCountryIcon + .PhoneInputCountrySelectArrow {
           color: var(--foreground);
         }
       `}</style>

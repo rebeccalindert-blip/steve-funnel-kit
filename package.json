@@ -1,7 +1,7 @@
 {
-  "name": "linkninja-marketing",
+  "name": "steve-funnel-kit",
   "version": "1.0.0",
-  "description": "LinkNinja Marketing Website",
+  "description": "Steve's Funnel Kit",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -22,9 +22,7 @@
     "astro": "^5.17.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "jsfxr": "^1.4.0",
     "lucide-react": "^0.575.0",
-    "phaser": "^3.90.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",

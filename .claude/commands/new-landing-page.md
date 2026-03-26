@@ -1,4 +1,4 @@
-Create a new landing page using the Velocity design system. Follow every step below exactly.
+Create a new landing page using the design system. Follow every step below exactly.
 
 $ARGUMENTS
 
@@ -13,7 +13,9 @@ Ask the user for:
    - `pas` — Problem-Agitate-Solution sales page
    - `abt-form` — Lead magnet with inline form
    - `abt-page` — Lead magnet with CTA button (no inline form)
-   - `dm-workshop` — Workshop/event signup
+   - `workshop` — Video embed + sticky signup form + social proof
+   - `form` — Multi-step form (lead capture → qualification questions → GHL notes)
+   - `success` — Thank-you / confirmation page
    - `custom` — Start from scratch with MarketingLayout
 3. **Headline** — The main H1 text
 4. **Subheadline** — Supporting text under the headline
@@ -34,7 +36,6 @@ Based on the page type, select the layout:
 | pas | `MarketingLayout` | Long-form needs navigation |
 | abt-form | `MarketingLayout` | Lead magnet with full site |
 | abt-page | `MarketingLayout` | Lead magnet with full site |
-| dm-workshop | `LandingLayout` | Full-width for event pages |
 | custom | `MarketingLayout` | Default safe choice |
 
 ## Step 3: Read the Closest Template
@@ -100,6 +101,8 @@ import SEO from '@/components/seo/SEO.astro';
 ## Step 5: Update Form Tags (if needed)
 
 If the user specified custom form tags, check `src/pages/api/lead.ts` and add them to the `ALLOWED_TAGS` array if they're not already present.
+
+**IMPORTANT:** Tags not in the `ALLOWED_TAGS` array will be silently dropped. Always verify new tags are in the allowlist before testing the form.
 
 ## Step 6: Add to Navigation (optional)
 

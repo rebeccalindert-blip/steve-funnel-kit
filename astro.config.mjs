@@ -6,7 +6,7 @@ import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: import.meta.env.SITE || 'https://linkninja.co',
+  site: import.meta.env.SITE || 'https://yourdomain.com',
   output: 'static',
   adapter: cloudflare({
     platformProxy: { enabled: true },

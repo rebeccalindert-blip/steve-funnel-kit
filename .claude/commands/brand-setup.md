@@ -1,4 +1,4 @@
-Walk the user through branding their Velocity Funnel Kit site. Follow every step below in order.
+Walk the user through branding their Steve's Funnel Kit site. Follow every step below in order.
 
 $ARGUMENTS
 
@@ -94,7 +94,25 @@ Ask if they want to switch. If yes, update `src/styles/tokens/colors.css` line 9
 @import '../themes/midnight.css';
 ```
 
-## Step 6: Summary
+## Step 6: Remove Demo Components
+
+Delete the demo-only directory and remove its import from the homepage:
+
+1. Delete the entire `src/components/_demo/` directory
+2. In `src/layouts/BaseLayout.astro`:
+   - Remove the `import ThemeCustomizer from '@/components/_demo/ThemeCustomizer.tsx';` line
+   - Remove the `<ThemeCustomizer client:only="react" />` line
+   - Remove the `<!-- Demo customizer: restore saved theme settings -->` inline `<script>` block (the entire second `<script is:inline>` block that references `sfk-` localStorage keys)
+   - In the first `<script is:inline>` block, remove the `sfk-dark` localStorage check and restore the simple `apply(mq.matches)` pattern
+3. In `src/layouts/LeadLayout.astro`:
+   - Remove the `import ThemeCustomizer` line
+   - Remove the `<ThemeCustomizer client:only="react" />` line
+   - Remove the `<!-- Demo customizer -->` inline `<script>` block
+   - Restore the original dark mode script (simple `apply(mq.matches)` pattern)
+
+These are for the starter kit's demo homepage only and should NOT ship to production.
+
+## Step 7: Summary
 
 Print what was changed:
 - Site config: company name, URL, etc.

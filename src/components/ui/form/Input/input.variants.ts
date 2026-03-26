@@ -13,8 +13,8 @@ export const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-8 text-sm',
-        md: 'h-10 text-sm',
+        sm: 'h-8 text-base sm:text-sm',
+        md: 'h-10 text-base sm:text-sm',
         lg: 'h-12 text-base',
       },
     },

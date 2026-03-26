@@ -1,6 +1,6 @@
-# Velocity Funnel Kit — AI Instructions
+# Steve's Funnel Kit — AI Instructions
 
-This is an Astro 5 marketing site with Tailwind CSS v4, React 19, and a GoHighLevel CRM integration. It uses the Velocity design system with design tokens, CVA component variants, and a semantic color architecture.
+This is an Astro 5 marketing site with Tailwind CSS v4, React 19, and a GoHighLevel CRM integration. It uses design tokens, CVA component variants, and a semantic color architecture.
 
 ## Golden Rules
 
@@ -25,7 +25,8 @@ src/pages/my-page.astro          # Route (URL)
 
 - `src/pages/` — File-based routing. `foo.astro` → `/foo`
 - `src/layouts/` — Page wrappers. Always wrap pages in a layout.
-- `src/components/ui/` — The component library. 31 components across 8 categories.
+- `src/components/ui/` — The component library. 33 components across 8 categories.
+- `src/components/_demo/` — Demo-only components (ThemeCustomizer). **Delete this folder when branding for production.**
 - `src/components/forms/` — `LeadCaptureForm.tsx` (React) and `MobileFormSheet.tsx`
 - `src/components/hero/` — Hero section with `layout`, `size`, variant props
 - `src/components/patterns/` — Composed patterns (ContactForm, StatCard, etc.)

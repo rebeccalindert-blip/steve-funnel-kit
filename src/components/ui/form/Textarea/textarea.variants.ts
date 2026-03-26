@@ -12,8 +12,8 @@ export const textareaVariants = cva(
   {
     variants: {
       size: {
-        sm: 'px-3 py-2 text-sm',
-        md: 'px-4 py-3 text-sm',
+        sm: 'px-3 py-2 text-base sm:text-sm',
+        md: 'px-4 py-3 text-base sm:text-sm',
         lg: 'px-4 py-3 text-base',
       },
     },

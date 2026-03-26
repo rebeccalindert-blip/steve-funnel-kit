@@ -22,14 +22,14 @@ interface ScriptLine {
   type: LineType;
 }
 
-// Replicate the actual CLI experience from create-velocity-astro
+// Replicate the actual CLI experience from create-your-project
 const script: ScriptLine[] = [
   // Initial command
-  { text: '$ pnpm create velocity-astro@latest', delay: 1200, type: 'command' },
+  { text: '$ pnpm create your-project@latest', delay: 1200, type: 'command' },
   { text: '', delay: 300, type: 'command' },
 
   // Intro banner (clack style)
-  { text: '┌  Create Velocity', delay: 400, type: 'intro' },
+  { text: '┌  Create Project', delay: 400, type: 'intro' },
   { text: '│', delay: 100, type: 'prompt-label' },
 
   // Project name prompt

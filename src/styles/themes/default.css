@@ -1,5 +1,5 @@
 /* =============================================================================
-   Velocity Theme - Foundation
+   Theme - Foundation
    =============================================================================
    A premium, brand-neutral base theme designed for funnel and landing page
    boilerplates. Clean enough to be a blank canvas, sophisticated enough to
@@ -109,9 +109,9 @@
   --theme-shadow-nav: 0 0 2px oklch(13% 0.016 265 / 0.03),
     0 2px 8px oklch(13% 0.016 265 / 0.06);
 
-  /* Button glow — emerald accent */
-  --theme-shadow-button-glow: 0 4px 14px oklch(75% 0.16 162 / 0.25),
-    0 0 0 1px oklch(75% 0.16 162 / 0.08);
+  /* Button glow — brand accent */
+  --theme-shadow-button-glow: 0 4px 14px oklch(75% 0.16 var(--brand-hue) / 0.25),
+    0 0 0 1px oklch(75% 0.16 var(--brand-hue) / 0.08);
 
   /* Inner highlight */
   --theme-shadow-inner: inset 0 2px 0 rgba(255, 255, 255, 0.12);
@@ -201,7 +201,7 @@
     0 0 1px oklch(0% 0 0 / 0.1);
   --theme-shadow-nav: 0 0 2px oklch(0% 0 0 / 0.12),
     0 2px 8px oklch(0% 0 0 / 0.2);
-  --theme-shadow-button-glow: 0 4px 14px oklch(75% 0.16 162 / 0.20),
-    0 0 0 1px oklch(75% 0.16 162 / 0.06);
+  --theme-shadow-button-glow: 0 4px 14px oklch(75% 0.16 var(--brand-hue) / 0.20),
+    0 0 0 1px oklch(75% 0.16 var(--brand-hue) / 0.06);
   --theme-shadow-inner: inset 0 2px 0 rgba(255, 255, 255, 0.06);
 }

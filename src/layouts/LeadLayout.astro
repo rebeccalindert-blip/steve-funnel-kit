@@ -4,6 +4,10 @@ import SEO from '@/components/seo/SEO.astro';
 import Logo from '@/components/ui/marketing/Logo/Logo.astro';
 import Footer from '@/components/layout/Footer.astro';
 import siteConfig from '@/config/site.config';
+// Demo-only: theme customizer + restore. Only renders in dev mode. Delete when branding for production.
+import ThemeCustomizer from '@/components/_demo/ThemeCustomizer.tsx';
+import DemoRestore from '@/components/_demo/DemoRestore.astro';
+const isDev = import.meta.env.DEV;
 
 interface Props {
   title?: string;
@@ -28,13 +32,20 @@ const { title, description } = Astro.props;
     <script is:inline>
       (function () {
         var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        function apply(dark) {
-          document.documentElement.classList.toggle('dark', dark);
+        function apply() {
+          var sfkDark = localStorage.getItem('sfk-dark');
+          if (sfkDark !== null) {
+            document.documentElement.classList.toggle('dark', sfkDark === '1');
+            return;
+          }
+          document.documentElement.classList.toggle('dark', mq.matches);
         }
-        apply(mq.matches);
-        mq.addEventListener('change', function (e) { apply(e.matches); });
+        apply();
+        mq.addEventListener('change', apply);
       })();
     </script>
+
+    {isDev && <DemoRestore />}
   </head>
 
   <body class="min-h-screen flex flex-col bg-background text-foreground antialiased">
@@ -52,9 +63,10 @@ const { title, description } = Astro.props;
       layout="minimal"
       showCopyright
       legalLinks={[
-        { label: 'Privacy', href: '/privacy' },
+        { label: 'Privacy', href: '/terms' },
       ]}
     />
+    {isDev && <ThemeCustomizer client:only="react" />}
   </body>
 </html>
 

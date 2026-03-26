@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function MobileFormSheet({
-  formTags = ['funnel_blueprint'],
+  formTags = ['website_lead'],
   submitLabel = 'Get Instant Access',
   termsHtml,
 }: Props) {

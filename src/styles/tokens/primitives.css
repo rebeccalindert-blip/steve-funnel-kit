@@ -1,5 +1,5 @@
 /* =============================================================================
-   Velocity Design Tokens - Primitive Colors
+   Design Tokens - Primitive Colors
    =============================================================================
    Raw color scales that themes build upon.
    Using OKLCH for perceptual color uniformity.
@@ -30,16 +30,17 @@
      brand-300 ≈ bright emerald for glows & dark-bg accents
      brand-500 = primary, WCAG AA readable on white
      ------------------------------------------------------------------------- */
-  --brand-50: oklch(97% 0.02 162);
-  --brand-100: oklch(94% 0.04 162);
-  --brand-200: oklch(89% 0.08 162);
-  --brand-300: oklch(82% 0.13 162);
-  --brand-400: oklch(75% 0.16 162);
-  --brand-500: oklch(64% 0.17 162);
-  --brand-600: oklch(54% 0.15 162);
-  --brand-700: oklch(45% 0.12 162);
-  --brand-800: oklch(35% 0.10 162);
-  --brand-900: oklch(25% 0.06 162);
+  --brand-hue: 162;
+  --brand-50: oklch(97% 0.02 var(--brand-hue));
+  --brand-100: oklch(94% 0.04 var(--brand-hue));
+  --brand-200: oklch(89% 0.08 var(--brand-hue));
+  --brand-300: oklch(82% 0.13 var(--brand-hue));
+  --brand-400: oklch(75% 0.16 var(--brand-hue));
+  --brand-500: oklch(64% 0.17 var(--brand-hue));
+  --brand-600: oklch(54% 0.15 var(--brand-hue));
+  --brand-700: oklch(45% 0.12 var(--brand-hue));
+  --brand-800: oklch(35% 0.10 var(--brand-hue));
+  --brand-900: oklch(25% 0.06 var(--brand-hue));
 
   /* Accent - Amber for secondary highlights / urgency */
   --orange-500: oklch(75% 0.18 75);

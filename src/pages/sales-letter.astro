@@ -5,306 +5,285 @@
  * Simple nav bar, no floating capsule
  * Mobile: single column + sticky bottom button → expanding form sheet
  */
-import '@/styles/global.css';
-import SEO from '@/components/seo/SEO.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import Header from '@/components/layout/Header.astro';
 import LeadCaptureForm from '@/components/forms/LeadCaptureForm.tsx';
 import MobileFormSheet from '@/components/forms/MobileFormSheet.tsx';
 import siteConfig from '@/config/site.config';
 
 const formTags = ['funnel_blueprint', 'sales_letter'];
-const termsHtml = `<p>By providing my information, I agree to receive communications and accept the <a href="/privacy/">Privacy Policy</a>. Unsubscribe anytime.</p>`;
+const termsHtml = `<p>By providing my information, I agree to receive communications and accept the <a href="/terms">Privacy Policy</a>. Unsubscribe anytime.</p>`;
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={siteConfig.branding.favicon.svg} />
-    <SEO
-      title="The $100K Funnel Blueprint — Build Funnels That Print Money"
-      description="The exact funnel system that generated $12M+ in revenue. Proven templates, automation sequences, and step-by-step playbooks. Free download."
-    />
-    <script is:inline>
-      (function () {
-        var mq = window.matchMedia('(prefers-color-scheme: dark)');
-        function apply() { document.documentElement.classList.toggle('dark', mq.matches); }
-        apply();
-        mq.addEventListener('change', apply);
-      })();
-    </script>
-  </head>
+<BaseLayout
+  title="The $100K Funnel Blueprint — Build Funnels That Print Money"
+  description="The exact funnel system that generated $12M+ in revenue. Proven templates, automation sequences, and step-by-step playbooks. Free download."
+>
+  <Header slot="header" layout="minimal" position="fixed" variant="solid" size="lg">
+    <span slot="actions" class="text-xs font-bold tracking-wide text-brand-500 uppercase">100% Free</span>
+  </Header>
 
-  <body class="min-h-screen bg-background text-foreground antialiased">
+  {/* ── Two-column layout ── */}
+  <div class="sl-layout">
 
-    {/* ── Nav ── */}
-    <Header layout="minimal" position="fixed" variant="solid" size="lg">
-      <span slot="actions" class="text-xs font-bold tracking-wide text-brand-500 uppercase">100% Free</span>
-    </Header>
+    {/* ══ LEFT: content ══ */}
+    <div class="sl-content">
 
-    {/* ── Two-column layout ── */}
-    <div class="sl-layout">
+      {/* Hero */}
+      <header class="sl-hero">
+        <h1 class="sl-title">
+          The $100K Funnel<br class="hidden sm:inline" /> Blueprint
+        </h1>
 
-      {/* ══ LEFT: content ══ */}
-      <div class="sl-content">
+        <p class="sl-subtitle">
+          Instantly build automated funnels that convert cold traffic into
+          paying customers, no agency required. And you get the templates, too.
+        </p>
+      </header>
 
-        {/* Hero */}
-        <header class="sl-hero">
-          <h1 class="sl-title">
-            The $100K Funnel<br class="hidden sm:inline" /> Blueprint
-          </h1>
+      {/* Editorial content */}
+      <article class="sales-letter">
 
-          <p class="sl-subtitle">
-            Instantly build automated funnels that convert cold traffic into
-            paying customers, no agency required. And you get the templates, too.
-          </p>
-        </header>
+        <p>
+          Building funnels from scratch is hard. But why is it still so hard to build a
+          funnel that actually converts? It's not anymore.
+          The $100K Funnel Blueprint is remarkably simple: proven templates, tested
+          sequences, and step-by-step playbooks in a ready-to-deploy format.
+        </p>
 
-        {/* Editorial content */}
-        <article class="sales-letter">
+        <p>
+          Here's <a href="#testimonials">what people are saying</a>. And <a href="#faq">the FAQ</a>.
+        </p>
 
-          <p>
-            Building funnels from scratch is hard. But why is it still so hard to build a
-            funnel that actually converts? It's not anymore.
-            The $100K Funnel Blueprint is remarkably simple: proven templates, tested
-            sequences, and step-by-step playbooks in a ready-to-deploy format.
-          </p>
+        <h2>Here's exactly what you get</h2>
 
-          <p>
-            Here's <a href="#testimonials">what people are saying</a>. And <a href="#faq">the FAQ</a>.
-          </p>
+        <p>
+          The difference between a business doing $5K/month and one doing $100K/month
+          usually isn't the product, the team, or even the traffic. It's <strong>the funnel</strong>.
+          Specifically, it's whether you have a system that takes a complete stranger and
+          walks them through a predictable, automated journey that ends with their credit
+          card on your checkout page.
+        </p>
 
-          <h2>Here's exactly what you get</h2>
+        <p>
+          Most businesses don't have this. They have a website with a "Contact Us"
+          button and hope for the best. This isn't a course. There's no 40-hour video
+          library or private Facebook group. It's a system — the actual assets and
+          templates we use — packaged so you can deploy them in a weekend.
+        </p>
 
-          <p>
-            The difference between a business doing $5K/month and one doing $100K/month
-            usually isn't the product, the team, or even the traffic. It's <strong>the funnel</strong>.
-            Specifically, it's whether you have a system that takes a complete stranger and
-            walks them through a predictable, automated journey that ends with their credit
-            card on your checkout page.
-          </p>
+        {/* Product screenshot — full width like once.com */}
+        <figure class="sl-figure">
+          <div class="sl-product-frame">
+            <img
+              src="/images/product-mockup.webp"
+              alt="The $100K Funnel Blueprint — ebook bundle"
+              width="1173"
+              height="1410"
+              loading="lazy"
+            />
+          </div>
+          <figcaption>Everything you need: templates, sequences, workflows, and implementation guide.</figcaption>
+        </figure>
 
-          <p>
-            Most businesses don't have this. They have a website with a "Contact Us"
-            button and hope for the best. This isn't a course. There's no 40-hour video
-            library or private Facebook group. It's a system — the actual assets and
-            templates we use — packaged so you can deploy them in a weekend.
-          </p>
+        <h3>High-Converting Page Templates</h3>
+        <p>
+          Squeeze pages, sales pages, order forms, upsell pages, and thank-you pages.
+          Every template has been A/B tested across thousands of visitors. You swap in
+          your copy, your logo, your colors — and publish. These templates alone have
+          generated millions in revenue across 340+ funnels.
+        </p>
 
-          {/* Product screenshot — full width like once.com */}
-          <figure class="sl-figure">
-            <div class="sl-product-frame">
-              <img
-                src="/images/product-mockup.webp"
-                alt="The $100K Funnel Blueprint — ebook bundle"
-                width="1173"
-                height="1410"
-                loading="lazy"
-              />
-            </div>
-            <figcaption>Everything you need: templates, sequences, workflows, and implementation guide.</figcaption>
-          </figure>
+        <h3>The 7-Figure Email Sequences</h3>
+        <p>
+          The exact welcome series, nurture sequence, and cart-abandonment flows that
+          drive 40%+ of total funnel revenue. Every email is pre-written with proven
+          subject lines and copy. Load them into your ESP and let them run.
+        </p>
 
-          <h3>High-Converting Page Templates</h3>
-          <p>
-            Squeeze pages, sales pages, order forms, upsell pages, and thank-you pages.
-            Every template has been A/B tested across thousands of visitors. You swap in
-            your copy, your logo, your colors — and publish. These templates alone have
-            generated millions in revenue across 340+ funnels.
-          </p>
+        <h3>Automation Workflows</h3>
+        <p>
+          Visual flowcharts for every stage: lead capture → qualification → nurture →
+          sale → upsell → referral. Not concepts — the actual workflows you copy into
+          your CRM. If/then logic, delay timers, tag triggers — all mapped out.
+        </p>
 
-          <h3>The 7-Figure Email Sequences</h3>
-          <p>
-            The exact welcome series, nurture sequence, and cart-abandonment flows that
-            drive 40%+ of total funnel revenue. Every email is pre-written with proven
-            subject lines and copy. Load them into your ESP and let them run.
-          </p>
+        <h3>The Funnel Math Spreadsheet</h3>
+        <p>
+          Before you spend a dollar on ads, know your numbers. This spreadsheet models
+          your customer acquisition cost, lifetime value, and break-even point across
+          different traffic scenarios.
+        </p>
 
-          <h3>Automation Workflows</h3>
-          <p>
-            Visual flowcharts for every stage: lead capture → qualification → nurture →
-            sale → upsell → referral. Not concepts — the actual workflows you copy into
-            your CRM. If/then logic, delay timers, tag triggers — all mapped out.
-          </p>
+        <h3>Step-by-Step Implementation Guide</h3>
+        <p>
+          Takes you from "I have nothing" to "my funnel is live and accepting payments."
+          No theory, no fluff — just "click here, paste this, publish that."
+        </p>
 
-          <h3>The Funnel Math Spreadsheet</h3>
-          <p>
-            Before you spend a dollar on ads, know your numbers. This spreadsheet models
-            your customer acquisition cost, lifetime value, and break-even point across
-            different traffic scenarios.
-          </p>
+        <h2>It fits in a lot of places</h2>
 
-          <h3>Step-by-Step Implementation Guide</h3>
-          <p>
-            Takes you from "I have nothing" to "my funnel is live and accepting payments."
-            No theory, no fluff — just "click here, paste this, publish that."
-          </p>
+        <ul class="sl-list">
+          <li><strong>As your primary funnel system.</strong> Tired of paying month after month <em>forever</em> just to keep your funnel running? Slash your costs and make the Blueprint your primary conversion system.</li>
+          <li><strong>As your backup system.</strong> Want to keep your existing tools, but need a backup when those go down? Don't pay in perpetuity for something on standby.</li>
+          <li><strong>As educational material.</strong> You get the templates. Dissect them, study them, modify them, examine them from the inside.</li>
+          <li><strong>For launches and promotions.</strong> Need a fast funnel for a new offer, a flash sale, or a seasonal campaign? Deploy a proven template in hours, not weeks.</li>
+          <li><strong>For client work.</strong> Set up a white-label funnel for your clients, completely separate from your own marketing. No licensing headaches.</li>
+        </ul>
 
-          <h2>It fits in a lot of places</h2>
+        <h2 id="testimonials">But does it actually work?</h2>
 
-          <ul class="sl-list">
-            <li><strong>As your primary funnel system.</strong> Tired of paying month after month <em>forever</em> just to keep your funnel running? Slash your costs and make the Blueprint your primary conversion system.</li>
-            <li><strong>As your backup system.</strong> Want to keep your existing tools, but need a backup when those go down? Don't pay in perpetuity for something on standby.</li>
-            <li><strong>As educational material.</strong> You get the templates. Dissect them, study them, modify them, examine them from the inside.</li>
-            <li><strong>For launches and promotions.</strong> Need a fast funnel for a new offer, a flash sale, or a seasonal campaign? Deploy a proven template in hours, not weeks.</li>
-            <li><strong>For client work.</strong> Set up a white-label funnel for your clients, completely separate from your own marketing. No licensing headaches.</li>
-          </ul>
+        <blockquote>
+          "We implemented the Blueprint on a Friday afternoon and had our first automated
+          sale by Monday morning. Within 90 days our funnel was doing $47K/month — more
+          than our entire sales team was producing before."
+          <cite>— Jamie Rodriguez, Founder at ScaleUp Agency</cite>
+        </blockquote>
 
-          <h2 id="testimonials">But does it actually work?</h2>
+        <p>
+          Jamie isn't an outlier. We hear stories like this every week. Not because the
+          Blueprint contains some secret formula, but because most businesses are starting
+          from such a low baseline that <em>any</em> systematic approach dramatically
+          outperforms "figure it out as we go."
+        </p>
 
-          <blockquote>
-            "We implemented the Blueprint on a Friday afternoon and had our first automated
-            sale by Monday morning. Within 90 days our funnel was doing $47K/month — more
-            than our entire sales team was producing before."
-            <cite>— Jamie Rodriguez, Founder at ScaleUp Agency</cite>
-          </blockquote>
+        <blockquote>
+          "I was paying an agency $4,000/month to manage my funnels. After the Blueprint,
+          I realized I could do 90% of it myself. Cancelled the agency, implemented the
+          templates, and actually got <em>better</em> results."
+          <cite>— Sarah Kim, Coach & Course Creator</cite>
+        </blockquote>
 
-          <p>
-            Jamie isn't an outlier. We hear stories like this every week. Not because the
-            Blueprint contains some secret formula, but because most businesses are starting
-            from such a low baseline that <em>any</em> systematic approach dramatically
-            outperforms "figure it out as we go."
-          </p>
+        <blockquote>
+          "The automation workflows alone saved me 20 hours a week. I stopped manually
+          sending follow-ups and just let the system run. Revenue went up 40% in the
+          first month."
+          <cite>— Marcus Chen, SaaS Founder</cite>
+        </blockquote>
 
-          <blockquote>
-            "I was paying an agency $4,000/month to manage my funnels. After the Blueprint,
-            I realized I could do 90% of it myself. Cancelled the agency, implemented the
-            templates, and actually got <em>better</em> results."
-            <cite>— Sarah Kim, Coach & Course Creator</cite>
-          </blockquote>
+        <h2>Why are we giving this away?</h2>
 
-          <blockquote>
-            "The automation workflows alone saved me 20 hours a week. I stopped manually
-            sending follow-ups and just let the system run. Revenue went up 40% in the
-            first month."
-            <cite>— Marcus Chen, SaaS Founder</cite>
-          </blockquote>
+        <p>
+          We sell advanced funnel tools and services. The Blueprint is the front door.
+          When you implement it and see results — and you will — some percentage of you
+          will want to go further. You'll want the advanced templates, the done-for-you
+          setup, the optimization services.
+        </p>
 
-          <h2>Why are we giving this away?</h2>
+        <p>
+          That's how we make money. Not by gatekeeping basic knowledge behind a paywall,
+          but by giving you the system for free, letting you prove it works, and being
+          there when you're ready to scale.
+        </p>
 
-          <p>
-            We sell advanced funnel tools and services. The Blueprint is the front door.
-            When you implement it and see results — and you will — some percentage of you
-            will want to go further. You'll want the advanced templates, the done-for-you
-            setup, the optimization services.
-          </p>
+        <h2 id="faq">Frequently asked questions</h2>
 
-          <p>
-            That's how we make money. Not by gatekeeping basic knowledge behind a paywall,
-            but by giving you the system for free, letting you prove it works, and being
-            there when you're ready to scale.
-          </p>
+        <h3>What exactly do I get?</h3>
+        <p>
+          The complete system: page templates, email sequences, automation workflows, the
+          funnel math spreadsheet, and the implementation guide.
+        </p>
 
-          <h2 id="faq">Frequently asked questions</h2>
+        <h3>Do I need technical skills?</h3>
+        <p>
+          No. If you can use a Google Doc, you can implement this. Click-by-click
+          walkthroughs with screenshots for every step.
+        </p>
 
-          <h3>What exactly do I get?</h3>
-          <p>
-            The complete system: page templates, email sequences, automation workflows, the
-            funnel math spreadsheet, and the implementation guide.
-          </p>
+        <h3>What if I already have a funnel?</h3>
+        <p>
+          Even better. Most people find 2–3 high-leverage optimizations immediately.
+          The email sequences and automation workflows alone are worth the download.
+        </p>
 
-          <h3>Do I need technical skills?</h3>
-          <p>
-            No. If you can use a Google Doc, you can implement this. Click-by-click
-            walkthroughs with screenshots for every step.
-          </p>
+        <h3>How is this different from courses?</h3>
+        <p>
+          This isn't a course. No video library. No weekly calls about mindset. You get
+          the exact assets that generated $12M+ in revenue, ready to deploy.
+        </p>
 
-          <h3>What if I already have a funnel?</h3>
-          <p>
-            Even better. Most people find 2–3 high-leverage optimizations immediately.
-            The email sequences and automation workflows alone are worth the download.
-          </p>
+        <h3>Is it really free?</h3>
+        <p>
+          Yes. No credit card, no trial, no bait-and-switch. We make money when you succeed
+          and choose to upgrade. The Blueprint is how we earn your trust.
+        </p>
 
-          <h3>How is this different from courses?</h3>
-          <p>
-            This isn't a course. No video library. No weekly calls about mindset. You get
-            the exact assets that generated $12M+ in revenue, ready to deploy.
-          </p>
+        <h3>Can I use this for my clients?</h3>
+        <p>
+          Absolutely. The templates are yours to use however you'd like — for your own
+          business, for client projects, or as a starting point for something entirely new.
+        </p>
 
-          <h3>Is it really free?</h3>
-          <p>
-            Yes. No credit card, no trial, no bait-and-switch. We make money when you succeed
-            and choose to upgrade. The Blueprint is how we earn your trust.
-          </p>
+        {/* Bottom spacing for mobile sticky button */}
+        <div class="h-24 lg:hidden" />
 
-          <h3>Can I use this for my clients?</h3>
-          <p>
-            Absolutely. The templates are yours to use however you'd like — for your own
-            business, for client projects, or as a starting point for something entirely new.
+      </article>
+    </div>
+
+    {/* ══ RIGHT: sticky CTA card ══ */}
+    <aside class="sl-sidebar hidden lg:block" id="get-started">
+      <div class="sticky" style="top: 6rem;">
+        <div class="sl-card">
+
+          <p class="sl-card-label">Free Download</p>
+          <p class="sl-card-title">Get the $100K Funnel Blueprint</p>
+          <p class="sl-card-body">
+            Templates, email sequences, automation workflows, and a step-by-step implementation guide — sent straight to your inbox.
           </p>
 
-          {/* Bottom spacing for mobile sticky button */}
-          <div class="h-24 lg:hidden" />
-
-        </article>
-      </div>
-
-      {/* ══ RIGHT: sticky CTA card ══ */}
-      <aside class="sl-sidebar hidden lg:block" id="get-started">
-        <div class="sticky" style="top: 6rem;">
-          <div class="sl-card">
-
-            <p class="sl-card-label">Free Download</p>
-            <p class="sl-card-title">Get the $100K Funnel Blueprint</p>
-            <p class="sl-card-body">
-              Templates, email sequences, automation workflows, and a step-by-step implementation guide — sent straight to your inbox.
-            </p>
-
-            <div class="sl-card-form">
-              <LeadCaptureForm
-                client:load
-                formTags={formTags}
-                submitLabel="Get Instant Access"
-              />
-            </div>
-
-            {/* Testimonial */}
-            <div class="sl-card-testimonial">
-              <div class="sl-card-stars">
-                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-              </div>
-              <p class="sl-card-quote">"Implemented on Friday, first sale by Monday. $47K/month within 90 days."</p>
-              <p class="sl-card-cite">Jamie Rodriguez, ScaleUp Agency</p>
-            </div>
-
+          <div class="sl-card-form">
+            <LeadCaptureForm
+              client:load
+              formTags={formTags}
+              submitLabel="Get Instant Access"
+            />
           </div>
 
-          <p class="sl-card-sub">
-            By providing my information, I agree to receive communications and accept the <a href="/privacy/">Privacy Policy</a>. Unsubscribe anytime.
-          </p>
+          {/* Testimonial */}
+          <div class="sl-card-testimonial">
+            <div class="sl-card-stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            </div>
+            <p class="sl-card-quote">"Implemented on Friday, first sale by Monday. $47K/month within 90 days."</p>
+            <p class="sl-card-cite">Jamie Rodriguez, ScaleUp Agency</p>
+          </div>
+
         </div>
-      </aside>
 
-    </div>
-
-    {/* Mobile Sticky Form Sheet */}
-    <div class="lg:hidden">
-      <MobileFormSheet
-        client:load
-        formTags={formTags}
-        submitLabel="Get Instant Access"
-        termsHtml={termsHtml}
-      />
-    </div>
-
-    {/* Footer */}
-    <footer class="sl-footer">
-      <div class="sl-footer-inner flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-foreground-muted">
-        <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
-        <div class="flex items-center gap-5">
-          <a href="/privacy" class="hover:text-foreground transition-colors">Privacy</a>
-          <a href="/terms" class="hover:text-foreground transition-colors">Terms</a>
-        </div>
+        <p class="sl-card-sub">
+          By providing my information, I agree to receive communications and accept the <a href="/terms">Privacy Policy</a>. Unsubscribe anytime.
+        </p>
       </div>
-    </footer>
+    </aside>
 
-  </body>
-</html>
+  </div>
+
+  {/* Mobile Sticky Form Sheet */}
+  <div class="lg:hidden">
+    <MobileFormSheet
+      client:load
+      formTags={formTags}
+      submitLabel="Get Instant Access"
+      termsHtml={termsHtml}
+    />
+  </div>
+
+  {/* Footer */}
+  <footer slot="footer" class="sl-footer">
+    <div class="sl-footer-inner flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-foreground-muted">
+      <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+      <div class="flex items-center gap-5">
+        <a href="/terms" class="hover:text-foreground transition-colors">Privacy</a>
+        <a href="/terms" class="hover:text-foreground transition-colors">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>
 
 <style>
   /* ── Two-column layout ── */

@@ -51,11 +51,11 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'YourBrand',
-  description: 'Turn every click into revenue with AI-powered funnels that capture, nurture, and convert leads automatically.',
+  name: "Steve's Funnel Kit",
+  description: 'Production-ready landing pages built on a proper design system. Brand with AI, deploy to Cloudflare for free.',
   url: SITE_URL || 'https://yourbrand.com',
   ogImage: '/og-default.png',
-  author: 'YourBrand',
+  author: 'Steve Butler',
   email: 'hello@yourbrand.com',
   socialLinks: [],
   verification: {
@@ -64,7 +64,7 @@ const siteConfig: SiteConfig = {
   },
   branding: {
     logo: {
-      alt: 'YourBrand',
+      alt: "Steve's Funnel Kit",
     },
     favicon: {
       svg: '/favicon.svg',

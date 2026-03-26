@@ -1,15 +1,23 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
-import { upsertContact } from '../../lib/ghl';
+import { upsertContact, addContactTags } from '../../lib/ghl';
 import { validateLeadForm, splitName } from '../../lib/validation';
 import type { APIResponse } from '../../lib/types';
 
 const ALLOWED_TAGS = [
-  'linkninja_lead',
-  'dm_workshop',
-  'linkedin_coaching',
+  'website_lead',
+  'funnel_signup',
   'website_contact',
+  'funnel_blueprint',
+  'squeeze_page',
+  'sales_letter',
+  'vsl_page',
+  'pas_page',
+  'lead_magnet',
+  'form_qualify',
+  'workshop_signup',
+  // TODO: Add your custom tags here
 ];
 
 const MAX_REQUESTS_PER_MINUTE = 10;
@@ -44,8 +52,9 @@ function getClientIp(request: Request): string {
 }
 
 const ALLOWED_ORIGINS = [
-  'https://linkninja.co',
-  'https://www.linkninja.co',
+  // TODO: Add your production domain(s)
+  // 'https://yourdomain.com',
+  // 'https://www.yourdomain.com',
 ];
 
 function getCorsOrigin(request: Request): string {
@@ -66,7 +75,7 @@ function isAllowedOrigin(request: Request): boolean {
 }
 
 function sanitizeTags(input: unknown): string[] {
-  if (!Array.isArray(input)) return ['linkninja_lead'];
+  if (!Array.isArray(input)) return ['website_lead'];
   return input
     .filter((tag): tag is string => typeof tag === 'string' && ALLOWED_TAGS.includes(tag))
     .slice(0, 5);
@@ -164,7 +173,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     // Build GHL payload
     const { firstName, lastName } = splitName(validation.data.name);
     const tags = sanitizeTags(body.tags);
-    if (tags.length === 0) tags.push('linkninja_lead');
+    if (tags.length === 0) tags.push('website_lead');
 
     const result = await upsertContact(
       {
@@ -173,13 +182,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
         email: validation.data.email,
         phone: validation.data.phone,
         locationId,
-        tags,
-        source: 'LinkNinja Website',
+        source: 'Website',
       },
       apiKey
     );
 
     if (result.success) {
+      // Append tags via dedicated endpoint (never overwrites existing tags)
+      if (result.contactId && tags.length > 0) {
+        await addContactTags(result.contactId, tags, apiKey);
+      }
+
       return new Response(
         JSON.stringify({
           success: true,

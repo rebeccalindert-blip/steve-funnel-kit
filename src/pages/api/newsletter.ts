@@ -9,8 +9,9 @@ const newsletterSchema = z.object({
 });
 
 const ALLOWED_ORIGINS = [
-  'https://linkninja.co',
-  'https://www.linkninja.co',
+  // TODO: Add your production domain(s)
+  // 'https://yourdomain.com',
+  // 'https://www.yourdomain.com',
 ];
 
 const MAX_REQUESTS_PER_MINUTE = 5;

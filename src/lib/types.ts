@@ -27,6 +27,22 @@ export interface GHLResponse {
   statusCode?: number;
 }
 
+export interface GHLTagsResponse {
+  success: boolean;
+  error?: string;
+  statusCode?: number;
+}
+
+export interface GHLLookupResponse {
+  success: boolean;
+  contactId?: string;
+}
+
+export interface QualifyFormData {
+  email: string;
+  responses: Record<string, string>;
+}
+
 export interface APIResponse {
   success: boolean;
   message: string;

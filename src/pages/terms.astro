@@ -1,0 +1,144 @@
+---
+/**
+ * Terms & License
+ * URL: /terms
+ */
+import PageLayout from '@/layouts/PageLayout.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import { Hero } from '@/components/hero';
+---
+
+<PageLayout
+  title="Terms & License"
+  description="Terms of use, license, and security responsibilities for Steve's Funnel Kit."
+>
+  <Hero layout="centered" size="sm" showGrid>
+    <Badge slot="badge" pill>Legal</Badge>
+
+    <h1 slot="title">
+      Terms & License
+    </h1>
+
+    <p slot="description">
+      What you can do with this kit, what you can't, and what you're responsible for.
+    </p>
+  </Hero>
+
+  <section class="py-[var(--space-section-lg)]">
+    <div class="mx-auto max-w-3xl px-6">
+      <article class="space-y-8 text-base leading-relaxed text-foreground-secondary">
+
+        <div>
+          <h2 class="font-display text-xl font-bold text-foreground mb-4">License</h2>
+          <p>
+            Steve's Funnel Kit is the intellectual property of <strong class="text-foreground">Steve Butler</strong>.
+            You are granted a personal, non-exclusive, non-transferable license to use this kit for your own business or client projects.
+          </p>
+          <ul class="mt-4 space-y-2">
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="check-circle" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+              <span>Use it to build landing pages for your own business</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="check-circle" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+              <span>Use it for client projects and white-label work</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="check-circle" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+              <span>Modify, customise, and extend the code as needed</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm text-[var(--error)]">
+              <Icon name="x-circle" size="sm" class="mt-0.5 shrink-0" />
+              <span>Do <strong>not</strong> redistribute, resell, or share the kit itself as a product or template</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm text-[var(--error)]">
+              <Icon name="x-circle" size="sm" class="mt-0.5 shrink-0" />
+              <span>Do <strong>not</strong> claim authorship of the kit or its design system</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl font-bold text-foreground mb-4">Use at Your Own Risk</h2>
+          <p>
+            This kit is provided <strong class="text-foreground">"as is"</strong> without warranty of any kind, express or implied.
+            Steve Butler is not liable for any damages, data loss, security breaches, or business losses arising from your use of this kit.
+          </p>
+          <p class="mt-4">
+            You are responsible for:
+          </p>
+          <ul class="mt-3 space-y-2">
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Keeping your API keys and secrets secure</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Configuring <code class="font-mono text-brand-500 bg-secondary px-1.5 py-0.5 rounded text-xs">ALLOWED_ORIGINS</code> with your production domain before going live</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Never committing your <code class="font-mono text-brand-500 bg-secondary px-1.5 py-0.5 rounded text-xs">.env</code> file to version control</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Storing GHL credentials as encrypted environment variables on Cloudflare</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Complying with applicable privacy laws (GDPR, CAN-SPAM, etc.) for your lead capture forms</span>
+            </li>
+            <li class="flex gap-3 items-start text-sm">
+              <Icon name="alert-triangle" size="sm" class="text-orange-500 mt-0.5 shrink-0" />
+              <span>Testing your deployment thoroughly before sending traffic to it</span>
+            </li>
+          </ul>
+        </div>
+
+        <Card variant="default" padding="lg">
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center shrink-0">
+              <Icon name="shield" class="w-5 h-5 text-brand-600 dark:text-brand-400" />
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-foreground mb-1">Security Note</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed">
+                The kit ships with CORS protection, rate limiting, origin validation, input sanitization, tag allowlisting,
+                honeypot fields, and security headers pre-configured. However, security is a shared responsibility.
+                You must configure your allowed origins and keep your API keys encrypted on Cloudflare.
+                The kit provides the tools… you need to use them correctly.
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        <div>
+          <h2 class="font-display text-xl font-bold text-foreground mb-4">GoHighLevel Integration</h2>
+          <p>
+            This kit integrates with GoHighLevel for lead capture. You are responsible for your own GHL account,
+            API usage, and compliance with GHL's terms of service. The kit author has no access to your GHL data
+            and is not responsible for any issues with your GHL account or API usage.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-xl font-bold text-foreground mb-4">Third-Party Services</h2>
+          <p>
+            This kit uses Cloudflare Pages for hosting and GoHighLevel for CRM. Both are third-party services
+            with their own terms, pricing, and policies. The kit author is not affiliated with either service
+            beyond being a user. Any costs associated with these services are your responsibility.
+          </p>
+        </div>
+
+        <div class="border-t border-border pt-8">
+          <p class="text-sm text-foreground-muted">
+            Last updated: March 2026. Questions? Find
+            <a href="https://www.linkedin.com/in/stevebutler/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 underline underline-offset-2">Steve on LinkedIn</a>.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+</PageLayout>

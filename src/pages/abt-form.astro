@@ -15,7 +15,7 @@ import siteConfig from '@/config/site.config';
 
 const formTags = ['funnel_blueprint', 'lead_magnet'];
 
-const termsHtml = `<p>By providing my information, I agree to receive communications and accept the <a href="/privacy/">Privacy Policy</a>. Unsubscribe anytime.</p>`;
+const termsHtml = `<p>By providing my information, I agree to receive communications and accept the <a href="/terms">Privacy Policy</a>. Unsubscribe anytime.</p>`;
 ---
 
 <!doctype html>
@@ -122,7 +122,7 @@ const termsHtml = `<p>By providing my information, I agree to receive communicat
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs md:text-sm text-foreground-muted">
         <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
         <div class="flex items-center gap-4 md:gap-6">
-          <a href="/privacy" class="transition-colors hover:text-foreground">Privacy</a>
+          <a href="/terms" class="transition-colors hover:text-foreground">Privacy</a>
           <a href="/terms" class="transition-colors hover:text-foreground">Terms of Service</a>
         </div>
       </div>

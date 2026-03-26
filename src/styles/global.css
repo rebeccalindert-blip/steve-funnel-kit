@@ -1,5 +1,5 @@
 /* =============================================================================
-   Velocity Global Styles
+   Global Styles
    =============================================================================
    Vercel-inspired: Clean, minimal, sophisticated
    ============================================================================= */
@@ -367,18 +367,18 @@
     background-image:
       radial-gradient(
         ellipse at 60% 50%,
-        oklch(82% 0.13 162 / 0.15) 0%,
-        oklch(89% 0.08 162 / 0.08) 50%,
+        oklch(82% 0.13 var(--brand-hue) / 0.15) 0%,
+        oklch(89% 0.08 var(--brand-hue) / 0.08) 50%,
         transparent 100%
       );
   }
 
-  /* Background glow on dark — stronger emerald */
+  /* Background glow on dark — stronger brand accent */
   .bg-glow-dark {
     background-image:
       radial-gradient(
         ellipse at 50% 50%,
-        oklch(75% 0.16 162 / 0.40) 0%,
+        oklch(75% 0.16 var(--brand-hue) / 0.40) 0%,
         transparent 46%
       );
   }
@@ -388,10 +388,10 @@
      Grain overlay adds film-stock texture. */
   .bg-grid-pattern {
     background:
-      radial-gradient(circle 300px at 70% 15%, oklch(82% 0.13 162 / 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 55% 55% at 60% 35%, oklch(82% 0.13 162 / 0.06) 0%, transparent 70%),
-      radial-gradient(circle 350px at 20% 75%, oklch(82% 0.13 162 / 0.04) 0%, transparent 70%),
-      radial-gradient(ellipse 90% 80% at 50% 30%, oklch(82% 0.13 162 / 0.03) 0%, transparent 80%);
+      radial-gradient(circle 300px at 70% 15%, oklch(82% 0.13 var(--brand-hue) / 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 55% 55% at 60% 35%, oklch(82% 0.13 var(--brand-hue) / 0.06) 0%, transparent 70%),
+      radial-gradient(circle 350px at 20% 75%, oklch(82% 0.13 var(--brand-hue) / 0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 90% 80% at 50% 30%, oklch(82% 0.13 var(--brand-hue) / 0.03) 0%, transparent 80%);
   }
 
   .bg-grid-pattern::after {
@@ -406,10 +406,10 @@
 
   .dark .bg-grid-pattern {
     background:
-      radial-gradient(ellipse 45% 40% at 68% 18%, oklch(75% 0.16 162 / 0.14) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 55% at 58% 38%, oklch(75% 0.16 162 / 0.10) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 45% at 22% 68%, oklch(75% 0.16 162 / 0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 90% 80% at 50% 30%, oklch(75% 0.16 162 / 0.04) 0%, transparent 80%);
+      radial-gradient(ellipse 45% 40% at 68% 18%, oklch(75% 0.16 var(--brand-hue) / 0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 55% at 58% 38%, oklch(75% 0.16 var(--brand-hue) / 0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 45% at 22% 68%, oklch(75% 0.16 var(--brand-hue) / 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 90% 80% at 50% 30%, oklch(75% 0.16 var(--brand-hue) / 0.04) 0%, transparent 80%);
   }
 
   .dark .bg-grid-pattern::after {
