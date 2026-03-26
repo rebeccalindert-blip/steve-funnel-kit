@@ -37,7 +37,7 @@ import siteConfig from '@/config/site.config';
   <body class="min-h-dvh flex flex-col bg-background text-foreground antialiased">
 
     {/* ── Logo ── */}
-    <header class="shrink-0 py-6">
+    <header class="shrink-0 py-4 md:py-6">
       <div class="mx-auto max-w-6xl px-6">
         <a href="/">
           <Logo variant="full" size="lg" />
@@ -47,7 +47,7 @@ import siteConfig from '@/config/site.config';
 
     {/* ── Hero ── */}
     <main class="flex-1 flex items-center py-6 md:py-8 lg:py-10">
-      <div class="w-full max-w-6xl mx-auto">
+      <div class="w-full max-w-6xl mx-auto px-6">
         <div class="flex flex-col lg:flex-row lg:items-center lg:gap-16 xl:gap-24">
 
           {/* ── Text Column ── */}
@@ -64,7 +64,7 @@ import siteConfig from '@/config/site.config';
             </p>
 
             {/* ── Benefits ── */}
-            <ul class="mt-6 md:mt-8 space-y-3 md:space-y-4">
+            <ul class="mt-4 md:mt-8 space-y-2 md:space-y-4">
               {[
                 'Proven templates that generated $12M+ in revenue',
                 'Step-by-step automation sequences included',
@@ -80,7 +80,7 @@ import siteConfig from '@/config/site.config';
             </ul>
 
             {/* ── CTA ── */}
-            <div class="mt-8 md:mt-10 flex flex-col sm:flex-row items-start gap-4">
+            <div class="mt-5 md:mt-10 flex flex-col sm:flex-row items-start gap-4">
               <Button size="lg" href="#get-started" class="!h-14 !px-8 !text-base">
                 Get Instant Access
                 <svg class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -90,7 +90,7 @@ import siteConfig from '@/config/site.config';
             </div>
 
             {/* ── Trust ── */}
-            <div class="mt-6 md:mt-8 flex items-center gap-2 text-xs md:text-sm text-foreground-muted">
+            <div class="mt-4 md:mt-8 flex items-center gap-2 text-xs md:text-sm text-foreground-muted">
               <div class="flex gap-0.5">
                 {[1,2,3,4,5].map(() => (
                   <svg class="h-4 w-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
@@ -102,8 +102,8 @@ import siteConfig from '@/config/site.config';
             </div>
           </div>
 
-          {/* ── Product Mockup ── */}
-          <div class="mt-10 lg:mt-0 lg:flex-1 flex justify-center lg:justify-end">
+          {/* ── Product Mockup (desktop only) ── */}
+          <div class="hidden lg:flex lg:mt-0 lg:flex-1 justify-center lg:justify-end">
             <img
               src="/images/product-mockup.webp"
               alt="The $100K Funnel Blueprint — ebook bundle mockup"
