@@ -1,0 +1,136 @@
+---
+/**
+ * Payment / Checkout Page
+ * Branded product page with CTA linking to your GHL payment link.
+ * URL: /payment
+ *
+ * Customise: Change the product name, price, description, features, and paymentUrl.
+ * The paymentUrl should be your GoHighLevel payment link (or Stripe, or any checkout URL).
+ */
+import LeadLayout from '@/layouts/LeadLayout.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+// Customise these for your offer
+const paymentUrl = 'https://secure.sevenfigurecreators.com/payment-link/68f9b5f9613b1b29a2cf06c9';
+const productName = 'The Complete Funnel System';
+const price = '$497';
+const originalPrice = '$997';
+const description = 'Everything you need to build, launch, and scale funnels that convert. Templates, sequences, automation workflows, and a step-by-step implementation guide.';
+
+const features = [
+  'All 12 landing page templates',
+  'Email sequence library (proven 40%+ open rates)',
+  'GoHighLevel automation workflows',
+  'Funnel math spreadsheet',
+  'Step-by-step implementation guide',
+  '30-day launch calendar',
+  'Private community access',
+  'Lifetime updates',
+];
+
+const guaranteeText = '30-day money-back guarantee. If it doesn\'t work for you, we\'ll refund every cent. No questions asked.';
+---
+
+<LeadLayout
+  title={`${productName} — Checkout`}
+  description={description}
+>
+  <section class="payment-hero relative overflow-hidden">
+    <div class="bg-grid-pattern pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40" aria-hidden="true" />
+
+    <div class="mx-auto max-w-4xl px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
+        {/* Left: Product details */}
+        <div class="lg:col-span-3">
+          <Badge variant="brand" pill>
+            <Icon name="zap" size="xs" />
+            Limited Offer
+          </Badge>
+
+          <h1 class="mt-3 font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground leading-tight">
+            {productName}
+          </h1>
+
+          <p class="mt-3 text-base leading-relaxed text-foreground-muted">
+            {description}
+          </p>
+
+          {/* What's included */}
+          <div class="mt-8">
+            <h2 class="text-sm font-bold text-foreground uppercase tracking-wider mb-4">What's included</h2>
+            <ul class="space-y-3">
+              {features.map((item) => (
+                <li class="flex gap-3 items-start text-foreground-secondary text-sm">
+                  <Icon name="check-circle" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Guarantee */}
+          <div class="mt-8 flex items-start gap-3 p-4 rounded-lg bg-secondary border border-border">
+            <Icon name="shield" size="sm" class="text-brand-500 mt-0.5 shrink-0" />
+            <p class="text-sm text-foreground-muted leading-relaxed">{guaranteeText}</p>
+          </div>
+        </div>
+
+        {/* Right: Price card */}
+        <div class="lg:col-span-2 lg:sticky lg:top-24">
+          <Card variant="default" padding="lg" class="text-center">
+            <p class="text-sm font-semibold text-foreground-muted">One-time payment</p>
+
+            <div class="mt-3 flex items-baseline justify-center gap-2">
+              <span class="text-4xl font-bold text-foreground font-display tracking-tight">{price}</span>
+              {originalPrice && (
+                <span class="text-lg text-foreground-muted line-through">{originalPrice}</span>
+              )}
+            </div>
+
+            {originalPrice && (
+              <p class="mt-1 text-xs text-brand-500 font-semibold">
+                Save {Math.round((1 - parseInt(price.replace('$','')) / parseInt(originalPrice.replace('$',''))) * 100)}% today
+              </p>
+            )}
+
+            <div class="mt-6">
+              <Button href={paymentUrl} size="lg" target="_blank" class="w-full">
+                <Icon name="lock" size="sm" class="mr-2" />
+                Buy Now
+              </Button>
+            </div>
+
+            <p class="mt-4 text-xs text-foreground-muted">
+              Secure checkout via GoHighLevel. Your payment details are encrypted.
+            </p>
+
+            <div class="mt-4 flex items-center justify-center gap-4 text-foreground-muted">
+              <Icon name="shield" size="xs" />
+              <span class="text-[10px]">SSL Encrypted</span>
+              <Icon name="credit-card" size="xs" />
+              <span class="text-[10px]">All cards accepted</span>
+            </div>
+          </Card>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</LeadLayout>
+
+<style>
+  .payment-hero {
+    padding-top: calc(var(--space-page-top-sm) + 32px);
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .payment-hero {
+      padding-top: calc(var(--space-page-top-sm) + 48px);
+      padding-bottom: 6rem;
+    }
+  }
+</style>

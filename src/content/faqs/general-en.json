@@ -1,0 +1,7 @@
+{
+  "question": "What is this template?",
+  "answer": "A production-ready starter template built on Astro and Tailwind CSS v4. It includes everything you need to build fast, beautiful, and accessible websites.",
+  "category": "general",
+  "order": 1,
+  "locale": "en"
+}

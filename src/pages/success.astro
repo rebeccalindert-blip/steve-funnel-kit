@@ -1,0 +1,89 @@
+---
+/**
+ * Success / Resource Delivery Page
+ * Shows after form submission with a link to the lead magnet / resource.
+ *
+ * This template demonstrates the "email paywall" pattern:
+ * → User fills out a form on a landing page
+ * → Form submits to GHL, creates contact
+ * → User is redirected here (or sees inline success)
+ * → This page shows the resource link / download button
+ *
+ * Customise: Change the heading, description, resource URL, and cover image.
+ * URL: /success
+ */
+import LeadLayout from '@/layouts/LeadLayout.astro';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+
+// Customise these for your offer
+const resourceUrl = 'https://example.com/your-guide.pdf'; // Replace with your actual resource URL
+const resourceLabel = 'Read the Guide';
+const heading = "You're in. Your guide is ready.";
+const description = "Click below to access your free resource. We've also sent a copy to your inbox.";
+---
+
+<LeadLayout
+  title="You're In — Access Your Resource"
+  description="Thanks for signing up. Your resource is ready to access."
+>
+  <section class="success-hero relative overflow-hidden flex items-center">
+    <div class="bg-grid-pattern pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40" aria-hidden="true" />
+
+    <div class="mx-auto max-w-2xl px-6 relative z-10">
+      <div class="text-center">
+
+        {/* Checkmark */}
+        <div class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-100 dark:bg-brand-900/40 mb-8">
+          <svg class="h-10 w-10 text-brand-700 dark:text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+          </svg>
+        </div>
+
+        <h1 class="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+          {heading}
+        </h1>
+
+        <p class="mt-3 text-base leading-relaxed text-foreground-muted max-w-md mx-auto">
+          {description}
+        </p>
+
+        {/* Resource Card */}
+        <Card variant="default" padding="lg" class="mt-8 max-w-sm mx-auto text-left">
+          <div class="flex items-start gap-4">
+            <div class="h-14 w-14 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center shrink-0">
+              <Icon name="file-text" class="w-7 h-7 text-brand-600 dark:text-brand-400" />
+            </div>
+            <div class="flex-1">
+              <p class="text-sm font-bold text-foreground">Your Free Resource</p>
+              <p class="text-xs text-foreground-muted mt-0.5">PDF guide — ready to download</p>
+              <div class="mt-3">
+                <Button href={resourceUrl} size="md" target="_blank" class="w-full">
+                  <Icon name="download" size="sm" class="mr-1.5" />
+                  {resourceLabel}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        <div class="mt-10">
+          <a href="/" class="text-sm font-medium text-brand-500 hover:text-brand-600 underline underline-offset-2">
+            ← Back to homepage
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</LeadLayout>
+
+<style>
+  .success-hero {
+    min-height: calc(100dvh - 4.5rem);
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+</style>

@@ -1,0 +1,270 @@
+---
+/**
+ * Evergreen Lead Magnet Page
+ * Cloned from sevenfigurecreators.com/start-selling-on-linkedin/
+ * URL: /lead-magnet
+ */
+import LeadLayout from '@/layouts/LeadLayout.astro';
+import LeadCaptureForm from '@/components/forms/LeadCaptureForm.tsx';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+
+const formTags = ['website_lead', 'lead_magnet'];
+const termsHtml = `<p>By providing my email, I agree to receive marketing communications and accept the <a href="/terms">Terms</a>. Unsubscribe anytime.</p>`;
+const videoId = 'dQw4w9WgXcQ';
+
+const benefits = [
+  'Find your superpower & ideal clients',
+  'Pitch with confidence and start closing deals',
+  'Get a ready-to-use offer document and pitch deck template',
+];
+
+const modules = [
+  { title: 'Module 1: Define Your Superpower', desc: 'Identify your unique skills and turn them into a valuable offer.' },
+  { title: 'Module 2: Find Your Ideal Clients', desc: 'Learn how to pinpoint and connect with people ready to buy.' },
+  { title: 'Module 3: Simplify Your Offer', desc: 'Create a clear, high-ticket offer that solves real problems.' },
+  { title: 'Module 4: Perfect Pitch Templates', desc: 'Ready-to-use Offer Document and Pitch Deck templates to close deals.' },
+  { title: 'Module 5: Start Selling', desc: 'Put it all together and begin making sales without spending a dollar on ads.' },
+];
+---
+
+<LeadLayout
+  title="Free Course — Learn How to Start Selling Online"
+  description="A free course showing you exactly how to create an offer that sells, so you can start making money online."
+>
+
+  {/* ================================================================
+      HERO
+      ================================================================ */}
+  <section class="elm-hero bg-secondary">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex flex-col lg:flex-row gap-6 lg:gap-16 items-center">
+
+        <div class="w-full lg:w-1/2">
+          <Badge variant="brand" pill>It's Free (For Now…)</Badge>
+
+          <h1 class="mt-3 font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground leading-[1.15]">
+            Learn how to start selling on LinkedIn (the smart way)
+          </h1>
+
+          <p class="mt-3 text-sm md:text-base leading-relaxed text-foreground-muted">
+            A free course showing you exactly how to create an offer that sells,
+            so you can start making money online.
+          </p>
+
+          <ul class="mt-4 space-y-2">
+            {benefits.map((item) => (
+              <li class="flex gap-2 items-center text-sm text-foreground-secondary">
+                <div class="h-4.5 w-4.5 rounded-full bg-brand-500 flex items-center justify-center shrink-0">
+                  <svg class="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                </div>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Mobile video */}
+          <div class="mt-4 lg:hidden">
+            <Card variant="elevated" padding="none" class="overflow-hidden">
+              <div class="aspect-video">
+                <iframe src={`https://www.youtube.com/embed/${videoId}?rel=0`} title="Course preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy" />
+              </div>
+            </Card>
+          </div>
+
+          <div class="mt-4 max-w-md">
+            <LeadCaptureForm
+              client:load
+              formTags={formTags}
+              submitLabel="Send Free Course!"
+              successLinkUrl="https://example.com/your-course"
+              successLinkLabel="Start the Course"
+              termsHtml={termsHtml}
+            />
+          </div>
+        </div>
+
+        {/* Right — Desktop video */}
+        <div class="hidden lg:block w-1/2">
+          <Card variant="elevated" padding="none" class="overflow-hidden">
+            <div class="aspect-video">
+              <iframe src={`https://www.youtube.com/embed/${videoId}?rel=0`} title="Course preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" loading="lazy" />
+            </div>
+          </Card>
+        </div>
+
+      </div>
+
+      {/* Scroll indicator */}
+      <div class="mt-6 flex justify-center lg:hidden">
+        <div class="scroll-hint">
+          <Icon name="chevron-down" size="sm" class="text-foreground-muted" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ================================================================
+      TESTIMONIAL — Brand-colored full-width band
+      ================================================================ */}
+  <section class="elm-testimonial py-10 md:py-16">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <p class="font-display text-xl md:text-2xl lg:text-3xl font-medium text-white leading-snug">
+        I might start charging $$$ for this, so I'd hit the 'Send Free Course!' button now if I were you.
+      </p>
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <img src="/images/steve-b.jpg" alt="Steve Butler" class="h-8 w-8 rounded-full object-cover" style="border-radius:9999px;" width="32" height="32" />
+        <p class="text-sm text-white/80">
+          <span class="text-white font-semibold">Steve Butler</span> &middot; LinkNinja
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ================================================================
+      EDITORIAL
+      ================================================================ */}
+  <section class="py-14 md:py-20">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="font-display text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground text-center mb-10 md:mb-14 leading-tight">
+        Make more progress on your offer in hours than you'd normally make in months
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div class="space-y-5 text-base leading-relaxed text-foreground-secondary">
+          <p>Imagine knowing exactly who you serve and how you help, and feeling confident with your offer.</p>
+          <p>Then, picture having access to professional templates for your Offer Document and Pitch Deck, so you can present your offer confidently — even if you're not a <em>sales person, designer or techie.</em></p>
+        </div>
+        <div class="space-y-5 text-base leading-relaxed text-foreground-secondary">
+          <p>A simple sales system with everything you need to sell. Sounds pretty good right?</p>
+          <p>This is practical, step-by-step guidance designed to help you create an offer that sells.</p>
+          <p class="font-bold text-foreground">Click the damn button and get started already!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ================================================================
+      MODULES
+      ================================================================ */}
+  <section class="py-14 md:py-20">
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground text-center mb-10 md:mb-14">
+        A glimpse at what's inside…
+      </h2>
+
+      <div class="divide-y divide-border">
+        {modules.map(({ title, desc }) => (
+          <div class="py-6 first:pt-0 last:pb-0">
+            <h3 class="font-display text-base md:text-lg font-bold text-foreground">{title}</h3>
+            <p class="mt-1.5 text-sm text-foreground-muted leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ================================================================
+      BOTTOM CTA — Brand-colored band (matches testimonial)
+      ================================================================ */}
+  <section class="elm-cta invert-section py-10 md:py-14">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-16">
+        <div class="lg:w-1/2">
+          <h2 class="font-display text-xl md:text-2xl font-bold text-white leading-tight">
+            Learn how to start selling on LinkedIn!
+          </h2>
+          <p class="mt-2 text-sm text-white/80 leading-relaxed">
+            A free course showing you exactly how to create an offer that sells,
+            so you can start making money online.
+          </p>
+        </div>
+        <div class="lg:w-1/2">
+          <LeadCaptureForm
+            client:load
+            formTags={formTags}
+            submitLabel="Send Free Course!"
+            successLinkUrl="https://example.com/your-course"
+            successLinkLabel="Start the Course"
+            termsHtml={termsHtml}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</LeadLayout>
+
+<style>
+  .elm-hero {
+    padding-top: calc(var(--space-page-top-sm) + 12px);
+    padding-bottom: 2rem;
+  }
+  @media (min-width: 1024px) {
+    .elm-hero {
+      padding-top: calc(var(--space-page-top-sm) + 24px);
+      padding-bottom: 2.5rem;
+    }
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    animation: bounce-subtle 2s ease-in-out infinite;
+    opacity: 0.4;
+  }
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* Brand-colored sections */
+  .elm-testimonial,
+  .elm-cta {
+    background: var(--brand-700);
+  }
+  .dark .elm-testimonial,
+  .dark .elm-cta {
+    background: var(--brand-900);
+  }
+
+  /* Footer matches the CTA section */
+  :global(footer) {
+    background: var(--brand-700) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  :global(footer *) {
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+  :global(footer a:hover) {
+    color: rgba(255, 255, 255, 1) !important;
+  }
+  .dark :global(footer) {
+    background: var(--brand-900) !important;
+  }
+
+  /* Form inputs in the brand-colored CTA section */
+  .elm-cta :global(input),
+  .elm-cta :global(select),
+  .elm-cta :global(textarea),
+  .elm-cta :global(.phone-input-kit) {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: white !important;
+  }
+  .elm-cta :global(input::placeholder),
+  .elm-cta :global(textarea::placeholder),
+  .elm-cta :global(.PhoneInputInput::placeholder) {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .elm-cta :global(input:focus),
+  .elm-cta :global(.phone-input-kit:focus-within) {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) !important;
+  }
+  .elm-cta :global(.PhoneInputCountry) {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  .elm-cta :global(.PhoneInputCountrySelectArrow) {
+    color: rgba(255, 255, 255, 0.6) !important;
+  }
+</style>

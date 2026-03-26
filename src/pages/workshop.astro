@@ -1,0 +1,391 @@
+---
+/**
+ * Workshop / Webinar Registration Page
+ * Layout: Hero → editorial prose → dialog form → floating CTA
+ * Added: video embed section between hero and editorial
+ * URL: /workshop
+ */
+import LeadLayout from '@/layouts/LeadLayout.astro';
+import LeadCaptureForm from '@/components/forms/LeadCaptureForm.tsx';
+import Button from '@/components/ui/form/Button/Button.astro';
+import Badge from '@/components/ui/data-display/Badge/Badge.astro';
+import Card from '@/components/ui/data-display/Card/Card.astro';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import Dialog from '@/components/ui/overlay/Dialog/Dialog.astro';
+import { Hero } from '@/components/hero';
+
+const formTags = ['website_lead', 'workshop_signup'];
+const videoId = 'dQw4w9WgXcQ'; // Replace with your YouTube video ID
+
+const termsHtml = `<p>By registering, I agree to receive communications and accept the <a href="/terms">Terms</a>. Unsubscribe anytime.</p>`;
+
+const perfectFor = [
+  'Coaches and consultants who want more booked calls',
+  'Agency owners looking to generate leads without ads',
+  'Course creators building an audience from scratch',
+  'Anyone tired of posting content and hoping for the best',
+  'People who want a system, not a hack',
+];
+
+const notFor = [
+  'Looking for a get-rich-quick scheme',
+  'Not willing to put in the work to implement',
+  'Happy with your current results and not looking to change',
+  'Want someone to do it all for you (we teach, you build)',
+];
+---
+
+<LeadLayout
+  title="Free Workshop — The $100K Funnel System"
+  description="Learn the exact funnel system that drives $100K+ months. Free live workshop. Limited spots."
+>
+  <!-- Hero -->
+  <Hero layout="centered" size="md" showGrid>
+    <Badge slot="badge" variant="brand" pill>
+      <Icon name="zap" size="xs" />
+      Online Workshop &bull; Free &bull; Limited Spots
+    </Badge>
+
+    <h1 slot="title">The &ldquo;$100K Funnel&rdquo; Workshop</h1>
+
+    <p slot="description">
+      In 90 minutes, you&rsquo;ll see exactly how we build funnels that convert cold traffic
+      into paying customers. No theory. No fluff. Just the system&mdash;live.
+    </p>
+
+    <div slot="actions">
+      <Button size="lg" data-open-dialog="workshop-dialog">Register for Free</Button>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-foreground-muted mt-5">
+      <span class="flex items-center gap-1.5">
+        <Icon name="check-circle" size="xs" class="text-brand-300" />
+        With YourBrand
+      </span>
+      <span class="flex items-center gap-1.5">
+        <Icon name="check-circle" size="xs" class="text-brand-300" />
+        90 Minutes
+      </span>
+      <span class="flex items-center gap-1.5">
+        <Icon name="check-circle" size="xs" class="text-brand-300" />
+        Online via Zoom
+      </span>
+    </div>
+  </Hero>
+
+  <!-- Video Embed -->
+  <section class="py-8 -mt-8">
+    <div class="mx-auto max-w-3xl px-6">
+      <div class="rounded-xl overflow-hidden border border-border bg-secondary aspect-video shadow-lg">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?rel=0`}
+          title="Workshop preview"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="w-full h-full"
+          loading="lazy"
+        />
+      </div>
+      <p class="mt-3 text-center text-xs text-foreground-muted">Watch the preview. The live session goes deeper.</p>
+    </div>
+  </section>
+
+  <!-- Editorial Content -->
+  <section class="py-[var(--space-section-md)] bg-background">
+    <div class="mx-auto max-w-3xl px-6">
+
+      <!-- Lead paragraph -->
+      <div class="border-l-4 border-brand-300 pl-6 my-8">
+        <p class="text-xl font-semibold text-foreground leading-relaxed">
+          Your funnels aren't converting because you're doing what everyone else does.
+        </p>
+        <p class="text-foreground-muted mt-2">We built a system that actually works.</p>
+      </div>
+
+      <!-- Prose block 1 -->
+      <div class="prose max-w-none">
+        <p>Here's the reality check:</p>
+
+        <p>You're sending people to a landing page that looks like every other landing page. You're hoping they fill in a form. You're praying they actually show up.</p>
+
+        <p>Meanwhile, our system is generating <strong>$100K+ months</strong> on autopilot.</p>
+
+        <p>How? A funnel system that takes cold traffic and walks them through a predictable, automated journey that ends with their credit card on your checkout page. The right offer, to the right person, at the right time.</p>
+
+        <p>This workshop isn't about building more pages. It's about building <strong>the right pages</strong> with the right copy and the right follow-up.</p>
+
+        <p>We're talking conversion rates that make paid ads look prehistoric.</p>
+
+        <p><strong>Systematic. Automated. Proven. Zero guesswork.</strong></p>
+
+        <p>The best part? You can set this up in a weekend. The templates are proven. The sequences are tested. You just need to know how to put them together.</p>
+
+        <p>That's what we're teaching.</p>
+
+        <h2>Why This System Works</h2>
+
+        <p>Because we tested everything.</p>
+
+        <blockquote>
+          This funnel system is built on data from thousands of real campaigns. Not theory. Real pages that captured real leads that closed real deals.
+        </blockquote>
+
+        <ul>
+          <li>Landing pages converting at 40%+ (industry average is 3-5%)</li>
+          <li>Email sequences driving 40% of total funnel revenue</li>
+          <li>Users closing $10K-$100K deals from funnel-generated leads</li>
+          <li>Zero ad spend required — just strategic positioning</li>
+        </ul>
+
+        <p>We turned funnels from a guessing game into a conversion machine.</p>
+
+        <p><strong>Small group. Fast implementation. Real results.</strong></p>
+
+        <h2>What We'll Actually Do (In 90 Minutes)</h2>
+
+        <p>No fluff. No theory. Just hands-on work building your funnel system.</p>
+
+        <p>Here's exactly what happens:</p>
+
+        <p><strong>First 20 minutes: The Funnel Reality Check</strong></p>
+        <ul>
+          <li>Why 95% of landing pages don't convert (and how to be in the 5%)</li>
+          <li>The psychology behind pages that capture and convert</li>
+          <li>What high-ticket buyers actually need to see before they act</li>
+        </ul>
+
+        <p><strong>Next 25 minutes: Building Your Funnel</strong></p>
+        <ul>
+          <li>Setting up your landing page with the design system</li>
+          <li>Choosing the right template for your offer</li>
+          <li>Connecting GoHighLevel for lead capture</li>
+        </ul>
+
+        <p><strong>Next 25 minutes: Sequences That Convert</strong></p>
+        <ul>
+          <li>The email sequences that drive 40% of revenue</li>
+          <li>Follow-up automation that runs while you sleep</li>
+          <li>Personalisation at scale without sounding robotic</li>
+        </ul>
+
+        <p><strong>Next 15 minutes: Launch Your First Campaign</strong></p>
+        <ul>
+          <li>Pick your offer and target audience</li>
+          <li>Deploy a proven template in minutes</li>
+          <li>Set up automation triggers and tracking</li>
+          <li>Leave with everything ready to go live</li>
+        </ul>
+
+        <p><strong>Final 5 minutes: Scale &amp; Optimise</strong></p>
+        <ul>
+          <li>Tracking what works and doubling down</li>
+          <li>A/B testing your pages and sequences</li>
+          <li>Your 30-day implementation roadmap</li>
+        </ul>
+
+        <h2>What Happens Next</h2>
+
+        <p><strong>Before:</strong> Quick form to understand your business and target market. We customise examples for your industry.</p>
+
+        <p><strong>During:</strong> 90 minutes of pure tactical training. Screen sharing, live examples, real templates.</p>
+
+        <p><strong>After:</strong> You get the recording, funnel templates, setup guide, and implementation calendar. Plus an invite to explore working together if you want to scale faster.</p>
+
+        <h2>Who This Is For</h2>
+
+        <p><strong>Perfect for:</strong></p>
+      </div>
+
+      <!-- Checklist: Perfect for -->
+      <ul class="space-y-3 my-6 text-foreground-secondary">
+        {perfectFor.map(item => (
+          <li class="flex items-start gap-3">
+            <Icon name="check" size="sm" class="text-brand-300 mt-0.5 shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="prose max-w-none">
+        <p><strong>Not for:</strong></p>
+      </div>
+
+      <!-- Checklist: Not for -->
+      <ul class="space-y-3 my-6 text-foreground-secondary">
+        {notFor.map(item => (
+          <li class="flex items-start gap-3">
+            <Icon name="x" size="sm" class="text-[var(--error)] mt-0.5 shrink-0" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Prose block 2 -->
+      <div class="prose max-w-none">
+        <p>If you sell something valuable and want a system that brings buyers to you, you're in the right place.</p>
+
+        <p><strong>This is for builders who want predictable revenue from a proven system.</strong></p>
+
+        <h2>What You Walk Away With</h2>
+
+        <p>Everyone who attends gets:</p>
+
+        <ul>
+          <li>Proven landing page templates (the ones converting at 40%+)</li>
+          <li>Email sequence templates that drive revenue on autopilot</li>
+          <li>GoHighLevel setup guide for your specific offer</li>
+          <li>Funnel configuration playbook</li>
+          <li>30-day implementation calendar</li>
+          <li>Recording to review and refine</li>
+        </ul>
+
+        <h2>Workshop Details</h2>
+      </div>
+
+      <!-- Info box as Card -->
+      <Card class="my-8" padding="lg">
+        <div class="space-y-3 text-foreground [&>p]:mb-0">
+          <p><strong>Format:</strong> Online via Zoom (link sent after registration)</p>
+          <p><strong>Duration:</strong> 90 minutes of hands-on training</p>
+          <p><strong>Investment:</strong> <strong>Free</strong> — limited spots per session</p>
+          <p><strong>Schedule:</strong> Dates announced via email after registration. We run small group sessions regularly.</p>
+        </div>
+      </Card>
+
+      <!-- Prose block 3 -->
+      <div class="prose max-w-none">
+        <h2>The Bottom Line</h2>
+
+        <p>You can keep building landing pages that don't convert. Keep hoping someone fills in the form.</p>
+
+        <p>Or you can learn the system that's turning cold traffic into paying customers at scale.</p>
+
+        <p>No guesswork. No generic templates. No praying for conversions.</p>
+
+        <p>Just a proven system for building funnels that actually work.</p>
+
+        <p><strong>90 minutes. Small groups. Real results.</strong></p>
+
+        <p>Learn the system. Build the funnel. Start converting.</p>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="final-cta text-center border-t border-border pt-10 mt-12">
+        <p class="text-2xl font-bold text-foreground font-display tracking-tight">Stop Guessing. Start Converting.</p>
+        <p class="text-lg text-foreground-muted mt-2">Free workshop. Limited spots. Register now.</p>
+        <div class="mt-6">
+          <Button size="lg" data-open-dialog="workshop-dialog">Register for Free</Button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Registration Dialog -->
+  <Dialog id="workshop-dialog" title="Register for the Workshop" size="md">
+    <LeadCaptureForm
+      client:load
+      formTags={formTags}
+      submitLabel="Register Free"
+      termsHtml={termsHtml}
+    />
+  </Dialog>
+
+  <!-- Floating CTA Bar -->
+  <div class="floating-cta" id="floating-cta">
+    <div class="container flex items-center justify-center gap-6">
+      <p class="hidden md:block text-sm text-foreground-muted mb-0">
+        90 min &bull; Online &bull; No cost
+      </p>
+      <Button variant="primary" size="lg" data-open-dialog="workshop-dialog" class="whitespace-nowrap w-full md:w-auto text-center">
+        Register for Free
+      </Button>
+    </div>
+  </div>
+</LeadLayout>
+
+<style>
+  /* Floating CTA — translucent backdrop */
+  .floating-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 1rem 0;
+    background: oklch(from var(--background) l c h / 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    transform: translateY(150%);
+    transition: transform 0.3s ease;
+  }
+
+  .floating-cta.visible {
+    transform: translateY(0);
+  }
+
+  /* Mobile dialog: full-screen + iOS scroll locking */
+  @media (max-width: 640px) {
+    :global(#workshop-dialog [data-dialog-panel]) {
+      max-width: 100% !important;
+      border-radius: 0;
+      min-height: 100vh;
+      max-height: none;
+    }
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    :global(#workshop-dialog) input,
+    :global(#workshop-dialog) textarea,
+    :global(#workshop-dialog) select {
+      font-size: 16px !important;
+    }
+  }
+</style>
+
+<script>
+  // Connect dialog triggers
+  document.querySelectorAll('[data-open-dialog]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = el.getAttribute('data-open-dialog');
+      if (id && (window as any).openDialog) (window as any).openDialog(id);
+    });
+  });
+
+  // Floating CTA scroll logic
+  const floatingCta = document.getElementById('floating-cta');
+  if (floatingCta) {
+    const showThreshold = window.innerWidth < 768 ? 450 : 768;
+    let visible = false;
+
+    function update() {
+      const scrollY = window.scrollY;
+      const finalCta = document.querySelector('.final-cta');
+      const docHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const nearBottom = scrollY + viewportHeight > docHeight - 200;
+
+      let hideNearFinalCta = false;
+      if (finalCta) {
+        const rect = finalCta.getBoundingClientRect();
+        hideNearFinalCta = rect.top < viewportHeight + 200;
+      }
+
+      if (scrollY > showThreshold && !nearBottom && !hideNearFinalCta) {
+        if (!visible) {
+          floatingCta.classList.add('visible');
+          visible = true;
+        }
+      } else {
+        if (visible) {
+          floatingCta.classList.remove('visible');
+          visible = false;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>

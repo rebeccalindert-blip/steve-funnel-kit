@@ -1,0 +1,77 @@
+---
+/**
+ * Multi-Step Form — Step 2
+ * Qualification questions → stored as GHL contact note
+ * URL: /form/step-2?email=user@example.com
+ *
+ * Layout: step indicator → heading → form → inline success
+ */
+import LeadLayout from '@/layouts/LeadLayout.astro';
+import QualifyForm from '@/components/forms/QualifyForm.tsx';
+import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+---
+
+<LeadLayout
+  title="Almost Done — Quick Questions"
+  description="Step 2 of 2. A few quick questions so we can prepare your custom plan."
+>
+  <section class="step2-hero relative overflow-hidden">
+    <div class="bg-grid-pattern pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,white,transparent)] opacity-40" aria-hidden="true" />
+
+    <div class="mx-auto max-w-xl px-6 relative z-10">
+
+      {/* Step indicator */}
+      <div id="step2-header" class="mb-8">
+        <div class="flex items-center justify-center gap-3 mb-6">
+          {/* Step 1 — completed */}
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full bg-brand-500 flex items-center justify-center">
+              <Icon name="check" size="xs" class="text-white" strokeWidth={3} />
+            </div>
+            <span class="text-xs font-semibold text-foreground-muted hidden sm:inline">Details</span>
+          </div>
+
+          <Icon name="arrow-right" size="xs" class="text-foreground-muted" />
+
+          {/* Step 2 — current */}
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-full bg-brand-500/20 border-2 border-brand-500 flex items-center justify-center">
+              <span class="text-xs font-bold text-brand-500">2</span>
+            </div>
+            <span class="text-xs font-semibold text-foreground hidden sm:inline">Quick Questions</span>
+          </div>
+        </div>
+
+        <h1 class="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground leading-tight text-center">
+          Nearly done.
+        </h1>
+
+        <p class="mt-2 text-base leading-relaxed text-foreground-muted text-center">
+          Three quick questions so we can prepare something useful for you. Takes 30 seconds.
+        </p>
+      </div>
+
+      <QualifyForm
+        client:load
+        submitLabel="Get My Custom Plan"
+        successHeading="Got it. You're in the mix."
+        successMessage="We'll be in touch with your custom plan. Keep an eye on your inbox."
+        successLinkUrl="/"
+        successLinkLabel="Back to homepage"
+      />
+    </div>
+  </section>
+</LeadLayout>
+
+<style>
+  .step2-hero {
+    padding-top: calc(var(--space-page-top-sm) + 48px);
+    padding-bottom: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .step2-hero {
+      padding-top: calc(var(--space-page-top-sm) + 64px);
+      padding-bottom: 6rem;
+    }
+  }
+</style>
