@@ -65,9 +65,9 @@ const faqItems = [
     </ul>
     <p class="mt-6 text-xs text-foreground-subtle">What 100s of businesses are using to scale growth</p>
 
-    {/* Aside — placeholder for visual */}
-    <div slot="aside" class="hidden lg:flex items-center justify-center rounded-xl border border-border bg-secondary aspect-[4/5] max-w-[360px] mx-auto">
-      <p class="text-sm text-foreground-muted">Product visual</p>
+    {/* Aside — product visual */}
+    <div slot="aside" class="hidden lg:flex items-center justify-center max-w-[360px] mx-auto">
+      <img src="/images/product-mockup.webp" alt="Product mockup" class="w-full h-auto rounded-xl" loading="eager" />
     </div>
   </Hero>
 
@@ -91,9 +91,16 @@ const faqItems = [
   <section class="py-[var(--space-section-lg)] bg-secondary">
     <div class="mx-auto max-w-6xl px-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <Card variant="default" padding="lg" class="flex justify-center items-center min-h-[240px]">
-          <Icon name="alert-circle" class="w-24 h-24 text-brand-500" strokeWidth={1.5} />
-        </Card>
+        <div class="aspect-video w-full rounded-xl overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Video"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
         <div>
           <h2 class="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
             Imagine going from current state to $10M+ per year FAST.
