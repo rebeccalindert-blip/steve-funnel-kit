@@ -1,3 +1,10 @@
+# Permissions
+
+When the user gives explicit approval, you may:
+- Push directly to `main`
+- Run the deploy command: `npm run build && npx wrangler pages deploy dist --project-name steve-funnel-kit`
+- Run any other command the user explicitly asks for
+
 # Steve's Funnel Kit … AI Instructions
 
 Astro 5 marketing site with Tailwind CSS v4, React 19, and GoHighLevel CRM. Design tokens, CVA component variants, semantic color architecture.

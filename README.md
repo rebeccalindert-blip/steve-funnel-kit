@@ -154,7 +154,10 @@ Every form submits to GHL. Here's how to wire it up:
 **5a. Get your credentials:**
 1. Log into [GoHighLevel](https://app.gohighlevel.com)
 2. **Settings > Business Profile** → copy your **Location ID**
-3. **Settings > API Keys** → create a key → copy the **API Key**
+3. **Settings > API Keys** → create a key with these scopes enabled:
+   - `contacts.write` — create/update contacts, add tags, add notes
+   - `contacts.readonly` — look up existing contacts by email
+4. Copy the **API Key**
 
 **5b. Create your .env file:**
 
