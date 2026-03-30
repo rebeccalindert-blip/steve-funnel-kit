@@ -1,3 +1,5 @@
+<!-- This is a Claude Code custom command. Users invoke it by typing /new-landing-page in the Claude Code prompt. Claude reads this file and follows the instructions below as a guided workflow. -->
+
 Create a new landing page using the design system. Follow every step below exactly.
 
 $ARGUMENTS
@@ -76,7 +78,7 @@ import SEO from '@/components/seo/SEO.astro';
 6. **Components** … import from `@/components/ui/` categories:
    -> Buttons: `@/components/ui/form/Button/Button.astro`
    -> Cards: `@/components/ui/data-display/Card/Card.astro`
-   -> Badges: `@/components/ui/data-display/Badge/Badge.astro`
+   -> Badges: `@/components/ui/data-display/Badge/Badge.astro` (6 variants: default, brand, success, warning, error, info. Props: `pill` for rounded, `pulse` for animated dot. Use `variant="brand" pill` for section labels above headings.)
    -> Icons: `@/components/ui/primitives/Icon/Icon.astro`
    -> Alerts: `@/components/ui/feedback/Alert/Alert.astro`
    -> CTA: `@/components/ui/marketing/CTA/CTA.astro`

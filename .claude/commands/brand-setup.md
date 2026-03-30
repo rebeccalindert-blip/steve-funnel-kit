@@ -1,3 +1,5 @@
+<!-- This is a Claude Code custom command. Users invoke it by typing /brand-setup in the Claude Code prompt. Claude reads this file and follows the instructions below as a guided workflow. -->
+
 Walk the user through branding their Steve's Funnel Kit site. Follow every step below in order.
 
 $ARGUMENTS
@@ -73,11 +75,16 @@ Show the pre-installed font options:
 | `Manrope Variable` | Geometric, modern | `@fontsource-variable/manrope` |
 | `Outfit Variable` | Friendly, rounded | `@fontsource-variable/outfit` |
 
-Ask if they want to change from the default. If yes:
+Ask if they want to change from the default. If yes, or if they want a font not in the list:
 
-1. Update the `@import` in `src/styles/global.css` to the new font package
-2. Update `--theme-font-sans` in `src/styles/themes/default.css` to the new font name
-3. If they want a different display font for headings, also update `--theme-font-display`
+1. **Install the font:** `npm install @fontsource-variable/<font-name>`
+2. **Update the `@import`** in `src/styles/global.css` (lines 13-14) to the new font package
+3. **Update `--theme-font-sans`** in `src/styles/themes/default.css` (lines 83-86) to the new font name with full fallback stack:
+   `--theme-font-sans: 'New Font Variable', 'New Font', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;`
+4. **Verify `@theme` registration** in `src/styles/global.css` (line 69): `--font-sans: var(--theme-font-sans);` must exist (it does by default)
+5. If they want a different display font for headings, also update `--theme-font-display` in `default.css`
+
+All four steps are required — skip any one and the Tailwind `font-sans` class won't pick up the new font.
 
 The monospace font (`JetBrains Mono Variable`) is for code and prices … leave it unless specifically asked.
 
@@ -95,21 +102,39 @@ Ask if they want to switch. If yes, update `src/styles/tokens/colors.css` line 9
 
 ## Step 6: Remove Demo Components
 
-Delete the demo-only directory and remove its import from the homepage:
+Remove demo components and their imports. **Do imports first, then delete the directory.**
 
-1. Delete the entire `src/components/_demo/` directory
-2. In `src/layouts/BaseLayout.astro`:
+**Important:** The demo customizer saves settings to localStorage (`sfk-*` keys) that override CSS variables on every page load. If you changed brand colors or fonts and saw no effect, this is why.
+
+1. In `src/layouts/BaseLayout.astro`:
    -> Remove the `import ThemeCustomizer from '@/components/_demo/ThemeCustomizer.tsx';` line
-   -> Remove the `<ThemeCustomizer client:only="react" />` line
-   -> Remove the `<!-- Demo customizer: restore saved theme settings -->` inline `<script>` block (the entire second `<script is:inline>` block that references `sfk-` localStorage keys)
-   -> In the first `<script is:inline>` block, remove the `sfk-dark` localStorage check and restore the simple `apply(mq.matches)` pattern
-3. In `src/layouts/LeadLayout.astro`:
-   -> Remove the `import ThemeCustomizer` line
-   -> Remove the `<ThemeCustomizer client:only="react" />` line
-   -> Remove the `<!-- Demo customizer -->` inline `<script>` block
-   -> Restore the original dark mode script (simple `apply(mq.matches)` pattern)
+   -> Remove the `import DemoRestore from '@/components/_demo/DemoRestore.astro';` line
+   -> Remove the `<DemoRestore />` component (in `<head>`)
+   -> Remove the `<ThemeCustomizer client:only="react" />` component (in `<body>`)
+   -> In the first `<script is:inline>` block, remove the `sfk-dark` localStorage check and simplify to:
+   ```javascript
+   (function () {
+     var mq = window.matchMedia('(prefers-color-scheme: dark)');
+     function apply(dark) { document.documentElement.classList.toggle('dark', dark); }
+     apply(mq.matches);
+     mq.addEventListener('change', function (e) { apply(e.matches); });
+     document.addEventListener('astro:after-swap', function () { apply(mq.matches); });
+   })();
+   ```
 
-These are for the starter kit's demo homepage only and should NOT ship to production.
+2. In `src/layouts/LeadLayout.astro`:
+   -> Remove the `import ThemeCustomizer` line
+   -> Remove the `import DemoRestore` line
+   -> Remove the `<DemoRestore />` component
+   -> Remove the `<ThemeCustomizer client:only="react" />` component
+   -> Simplify the dark mode script the same way as BaseLayout
+
+3. Delete the entire `src/components/_demo/` directory
+
+4. Tell the user to clear leftover localStorage in their browser:
+   -> Open browser console → `Object.keys(localStorage).filter(k => k.startsWith('sfk-')).forEach(k => localStorage.removeItem(k))`
+
+**Keep the dark mode script** (the first `<script is:inline>` in each layout). It detects system dark mode preference. Only remove the `sfk-dark` check from it.
 
 ## Step 7: Summary
 

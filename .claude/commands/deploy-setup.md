@@ -1,3 +1,5 @@
+<!-- This is a Claude Code custom command. Users invoke it by typing /deploy-setup in the Claude Code prompt. Claude reads this file and follows the instructions below as a guided workflow. -->
+
 Guide the user through deploying their Steve's Funnel Kit to Cloudflare Pages with GoHighLevel integration. Follow every step below in order.
 
 $ARGUMENTS
@@ -53,6 +55,10 @@ const ALLOWED_ORIGINS = [
 ## Step 4: Update Site URL
 
 Update `url` in `src/config/site.config.ts` to `https://<their-domain>`.
+
+### Critical: astro.config.mjs
+
+Do NOT remove the `react-dom/server.edge` alias in `astro.config.mjs` (the `vite.resolve.alias` and `vite.ssr.resolve.conditions` settings). These are required for React components to render on Cloudflare's workerd runtime. Removing them causes "MessageChannel is not defined" or "require is not defined" build errors.
 
 ## Step 5: Deploy to Cloudflare
 

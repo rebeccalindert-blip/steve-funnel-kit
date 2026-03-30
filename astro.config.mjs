@@ -5,6 +5,8 @@ import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
+const isBuild = process.argv.includes('build');
+
 export default defineConfig({
   site: import.meta.env.SITE || 'https://yourdomain.com',
   output: 'static',
@@ -40,9 +42,11 @@ export default defineConfig({
       },
     },
     resolve: {
-      alias: {
-        'react-dom/server': 'react-dom/server.edge',
-      },
+      // The edge alias is required for Cloudflare Workers but breaks Vite's dev server
+      // (server.edge.js uses CommonJS require() which ESM module runner can't handle)
+      alias: isBuild
+        ? { 'react-dom/server': 'react-dom/server.edge' }
+        : {},
     },
   },
 
