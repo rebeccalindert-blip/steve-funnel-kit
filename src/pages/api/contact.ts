@@ -13,7 +13,7 @@ const contactSchema = z.object({
 
 const ALLOWED_ORIGINS = [
   // TODO: Add your production domain(s)
-  // 'https://yourdomain.com',
+  'https://offers.lindertco.com.au',
   // 'https://www.yourdomain.com',
 ];
 

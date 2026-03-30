@@ -35,7 +35,7 @@ function getClientIp(request: Request): string {
 
 const ALLOWED_ORIGINS = [
   // TODO: Add your production domain(s)
-  // 'https://yourdomain.com',
+  'https://offers.lindertco.com.au',
   // 'https://www.yourdomain.com',
 ];
 
